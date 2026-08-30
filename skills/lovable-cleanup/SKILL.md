@@ -1,13 +1,15 @@
 ---
 name: lovable-cleanup
-description: "Audits and strips Lovable scaffolding from Vite + React projects — removes lovable-tagger, swaps placeholder assets, prunes unused Radix deps, and cleans generated docs so the codebase ships as yours."
+description: "Audits and strips Lovable scaffolding from Vite + React projects — removes lovable-tagger, swaps placeholder assets, prunes unused Radix deps, cleans generated docs, and neutralizes stale favicon/CDN caching so the codebase ships as yours."
 risk: safe
 source: community
 source_repo: whoisabhishekadhikari/lovable-cleanup
 source_type: community
 author: whoisabhishekadhikari
 date_added: "2026-06-13"
-tags: [lovable, cleanup, vite, react, shadcn, devtools]
+date_updated: "2026-08-31"
+version: "2.0.0"
+tags: [lovable, cleanup, vite, react, shadcn, devtools, vercel, favicon]
 tools: [claude, cursor, codex, antigravity, gemini-cli]
 ---
 
@@ -23,7 +25,7 @@ tools: [claude, cursor, codex, antigravity, gemini-cli]
 Lovable (lovable.dev) bootstraps Vite + React + shadcn/ui projects with its own tagger
 dependency, branding, placeholder assets, and generated markdown docs baked in. Most
 developers export from Lovable and want a clean, ownable codebase before shipping or
-open-sourcing. This skill covers all 14 areas where Lovable leaves fingerprints.
+open-sourcing. This skill covers all 15 areas where Lovable leaves fingerprints.
 
 ---
 
@@ -75,6 +77,8 @@ shadcn components via the `asChild` prop.
 6. Environment & Git (Areas 9 & 12) — security sweep
 7. SEO / deploy (Area 11) — usually a no-op; confirm and move on
 8. Unused deps (Area 13) — safe to defer until after ship if on a deadline
+9. Favicon / CDN cache (Area 15) — do ASAP after assets are swapped; the icon
+   survives deletion and needs cache-aware handling
 
 ---
 
@@ -137,7 +141,7 @@ Replace these files (keep filenames, swap content):
 
 | File | Action |
 |---|---|
-| `favicon.ico` | Replace with real icon |
+| `favicon.ico` | Overwrite with real icon — do NOT just delete, see Area 15 |
 | `favicon.png` | Replace with real icon |
 | `og-image.png` / `logo.png` | Replace with real brand assets |
 | `placeholder.svg` | Usually unused — safe to delete |
@@ -292,6 +296,111 @@ grep -in "lovable" components.json eslint.config.js
 
 ---
 
+### Area 15 · Favicon removal & stale CDN caches (Vercel)
+
+Lovable ships a default `favicon.ico`, and browsers auto-request it from site
+root even when `index.html` links a different icon. On Vercel this one file
+routinely survives cleanup — `200 OK` with `x-vercel-cache: HIT` and a stale
+ETag under `Cache-Control: public, max-age=0, must-revalidate` — for hours after
+the file is deleted and even after dashboard purges. Treat favicon removal as a
+cache problem, not a file problem.
+
+**1 · Overwrite in place, don't delete**
+
+Deleting a static file from `public/` does not reliably evict Vercel's edge
+copy. Overwriting the same path with replacement content forces a new ETag, so
+clients revalidate and the stale icon stops serving — no purge required.
+
+If no real brand icon is ready, write a valid transparent 1×1 ICO:
+
+<!-- security-allowlist: writes a 70-byte ICO into the project's public/, local only -->
+```bash
+node -e '
+const fs = require("fs");
+const b = Buffer.alloc(6 + 16 + 40 + 8);   // header + dir entry + DIB + pixels
+b.writeUInt16LE(1, 2);   b.writeUInt16LE(1, 4);   // type, count
+b.writeUInt8(1, 6);      b.writeUInt8(1, 7);      // width, height
+b.writeUInt16LE(1, 10);  b.writeUInt16LE(32, 12); // planes, bpp
+b.writeUInt32LE(40 + 8, 14);                     // image size
+b.writeUInt32LE(22, 18);                         // offset to DIB
+b.writeUInt32LE(40, 22);   // biSize
+b.writeInt32LE(1, 26);     // width
+b.writeInt32LE(2, 30);     // height (xor + and mask)
+b.writeUInt16LE(1, 34);    // planes
+b.writeUInt16LE(32, 36);   // bpp
+b.writeUInt32LE(0, 38);    // compression
+b.writeUInt32LE(8, 42);    // sizeImage (xor 4 + and 4)
+fs.writeFileSync("public/favicon.ico", b);
+'
+```
+
+**2 · Link all icon flavours in `index.html`**
+
+Browsers always request `/favicon.ico` even without a link, so the path must
+exist and the modern/Apple entry points should too:
+
+```html
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+```
+
+`apple-touch-icon.png` must be a real PNG (recommended 180×180). A solid brand-
+colour square is an acceptable placeholder; flag it for later replacement.
+
+**3 · Add cache headers (`vercel.json`)**
+
+Vercel's default `public, max-age=0, must-revalidate` for static files makes
+every page load revalidate the favicon. Cache what is final and keep what may
+still be replaced revalidatable:
+
+- `/favicon.svg`, `/apple-touch-icon.png` — final brand assets →
+  `public, max-age=31536000, immutable`
+- `/favicon.ico` — an old-format fallback that may later be swapped for real art
+  → `public, max-age=86400` (no `immutable`)
+
+```json
+{
+  "headers": [
+    {
+      "source": "/favicon.ico",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    },
+    {
+      "source": "/favicon.svg",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/apple-touch-icon.png",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ]
+}
+```
+
+✅ Never mark an unversioned URL `immutable` while a placeholder may still be
+swapped — `immutable` tells browsers not to revalidate for the max-age lifetime,
+so a later replacement won't propagate for up to a year. Use `immutable` only on
+versioned URLs (e.g. `/favicon-<hash>.svg`) or once content is final.
+
+**4 · Verify after deploy**
+
+<!-- security-allowlist: remote curl header check of own domain, read-only -->
+```bash
+curl -sI https://YOUR-DOMAIN/favicon.ico \
+  | grep -i "cache-control\|etag"
+```
+
+Expect a new ETag (and, for `/favicon.svg`, `Cache-Control: public,
+max-age=31536000, immutable`). `/favicon.ico` should stay revalidatable
+(`public, max-age=86400`).
+
+**Gotcha — the staging URL:** a `*.vercel.app` preview may be SSO-protected
+(`_vercel_sso_nonce` 302) and wrap deploys in a provider frame that injects
+platform branding. Always verify icons on the real custom domain.
+
+---
+
 ## Master Scan Command
 
 <!-- security-allowlist: recursive grep across project directory, read-only, no network -->
@@ -342,6 +451,8 @@ Agent:
 - ✅ **Do:** Run dep removal (Areas 2 & 7) before touching source files
 - ✅ **Do:** Skim Lovable-generated docs before deleting — may contain useful arch notes
 - ✅ **Do:** Verify `npm run build` passes after every batch of changes
+- ✅ **Do:** Overwrite favicons in place (Area 15) — deleting them leaves stale CDN copies
+- ✅ **Do:** Deploy replacement favicon content and cache headers in the same commit
 - ✅ **Do:** Replace OG image before launch — it directly affects social sharing previews
 - ❌ **Don't:** Remove `@radix-ui/react-slot` — it's an indirect dep of most shadcn components
 - ❌ **Don't:** Leave empty env vars like `LOVABLE_PROJECT_ID=` — delete the whole line
@@ -350,8 +461,8 @@ Agent:
 
 ## Limitations
 
-- This skill does not create or source brand assets (favicons, OG images) — it only flags
-  what needs replacing. The user must supply real assets.
+- This skill does not create or source real brand assets (favicons, OG images). Area 15
+  generates a transparent placeholder ICO only — the user must supply genuine artwork.
 - Dep pruning (Area 13) is safe but not foolproof — some Radix packages are indirect deps
   not caught by a direct `grep`. Always verify with `npm run build`.
 - The skill does not modify `components.json` aliases automatically — it only scans and
@@ -379,6 +490,14 @@ the `from '@radix-ui/...'` import to find which component depends on it.
 **Symptoms:** Browser tab shows "Lovable" or "Vite App" despite edits  
 **Solution:** Check for a `<Helmet>` or `<Head>` component in `src/App.tsx` or a layout
 wrapper — React-level title tags override `index.html` at runtime.
+
+### Problem: Old favicon still serving after deletion (Vercel)
+
+**Symptoms:** `curl -sI https://<domain>/favicon.ico` returns the old ETag with
+`x-vercel-cache: HIT`; dashboard purges don't clear it  
+**Solution:** Overwrite `public/favicon.ico` with replacement content (a transparent
+1×1 ICO if no real asset yet) so the ETag changes — see Area 15. Never rely on an
+empty-deploy "redeploy" commit alone.
 
 ---
 
