@@ -1,6 +1,6 @@
 ---
 name: email-issue-fixer
-description: "Fix small mistakes that make an email look careless without touching the writer's voice: duplicated words, wrong articles, subject-verb agreement, wrong-word slips. On request, strip known tracking parameters from links. Always returns the draft plus a change list."
+description: "Fix small email mistakes without touching the writer's voice, and strip tracking parameters from links on request. Always returns the corrected draft plus a change list."
 category: writing
 risk: safe
 source: self
@@ -43,15 +43,19 @@ Never change names, numbers, dates, quoted text, or anything that alters what th
 
 Do not touch links during a normal proofread. Clean them only when the user asks for it.
 
-When asked, remove only these known tracking keys:
+When asked, remove only these unambiguous tracking keys:
 
-- `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `mc_cid`, `mc_eid`, `fbclid`, `gclid`, `igshid`, `ref`, `ref_src`, `_hsenc`, `_hsmi`
+- `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `mc_cid`, `mc_eid`, `fbclid`, `gclid`, `igshid`, `_hsenc`, `_hsmi`
 
 Keep every other parameter. Values like `id`, `page`, `v`, `q`, or anything unfamiliar are often what makes the link work. When in doubt, keep it.
+
+Treat `ref`, `ref_src`, and similarly generic keys as ambiguous: they are sometimes attribution, sometimes application state the link needs to work. Do not strip them automatically. Only remove them when context confirms they are attribution, or ask the writer first.
 
 Do not delete whole links. Do not delete a link because it appears twice; signature links and repeated calls to action are usually deliberate.
 
 Flag rather than fix: shortened links (bit.ly and similar), unfamiliar domains, and any query string that looks like a token, session ID, or credential. Point them out and let the writer decide.
+
+If a query parameter looks like a credential, token, or session ID, do not echo its value anywhere in the output. Keep the link only by replacing the sensitive value with a placeholder such as `[REDACTED]` (for example `?auth=[REDACTED]`), list the redaction in "Changes made", and tell the writer to re-enter the real value before sending. If they prefer, advise rotating the leaked value first.
 
 ## Always return
 
@@ -106,6 +110,6 @@ Changes made:
 - Removed 2 tracking parameters (utm_source, utm_medium)
 - Kept id=123, which the link needs to open the right report
 
-## Limits
+## Limitations
 
 This reads and edits text only. It cannot judge whether the email's facts, tone, or timing are right. That stays with the writer.
