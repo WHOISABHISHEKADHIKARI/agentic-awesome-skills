@@ -630,3 +630,38 @@
 - Replaced the stale 14-entry web list with the canonical editorial definitions, exposed all included skills and starter briefs, and bound links to the catalog release.
 - Removed fixed 15-plugin counts from prerendering and live verification; added source parity and stale-count regressions.
 - Scope and composition rationale: [Specialized Plugins](docs/users/specialized-plugin-roadmap.md). No release or deployment.
+
+## Specialized plugin support-file completion
+
+- Supplied every previously reported missing support file and checked all selected entrypoints for prose-declared resource paths.
+- Removed imaginary OAuth/script clients, routed template references to actual inline procedures, and repaired the hardening checklist.
+- Added resource/mirror parity and executable chunking/KPI/SLO regressions; corrected unsafe or misleading examples encountered during the content review.
+- Updated the [plugin review](docs/users/specialized-plugin-roadmap.md) with resolved findings and explicit verification scope. No release or deployment.
+
+## Repository documentation consistency — 2026-09-06
+
+Audited 205 repository Markdown documents outside skill content and generated plugin copies for references and commands; cross-checked operational guidance with exact-base implementation. Corrected protected-workflow contradictions, stale translations, update/rollback claims, plugin status and navigation. Added a repeatable regression with explicit historical exceptions. Full scope and limitations: [audit report](docs/maintainers/documentation-consistency-2026-09-06.md). No publication is included.
+
+## MCP and CLI pipeline audit — 2026-09-06
+
+Reviewed the supported package-to-plan pipeline and repaired MCP overload correlation, notification responses and invalid envelope handling. Added negative and real-stdio regressions; verification includes the isolated installed-candidate smoke and the existing Core/repository suites. Scope and limits: [pipeline audit](docs/maintainers/mcp-cli-pipeline-audit-2026-09-06.md). No release or host configuration change is included.
+
+## Agent-owned CLI workflow — 2026-09-06
+
+Added a [manifest-to-installation preview](docs/users/aas-core.md#use-the-reviewed-selection), unique verified runtime lookup, and actionable bounded error guidance. Selection and project analysis remain exclusively agent-owned. Verification details are recorded in [the workflow audit](docs/maintainers/agent-owned-cli-workflow-2026-09-06.md). No publication or real host configuration changes.
+
+## Complete CLI handoff verification — 2026-09-06
+
+Exercised native Codex MCP selection through an actual published-release installation, checked installed file digests, and extended candidate tests through real copying, repetition, pruning and negative paths. Fixed inconsistent destination validation and the direct installer's unhandled path error. See [the end-to-end report](docs/maintainers/workflow-e2e-verification-2026-09-06.md). No publication or real MCP configuration changes.
+
+## Windows and PowerShell workflow verification
+
+The packed preview matrix now includes Windows with PowerShell execution and real Git against an isolated local candidate release fixture. Linux and Windows receipts are both required; a missing Windows receipt fails aggregation. Publication and real host configuration are outside this check.
+
+## PowerShell 5.1 and 16.9.0 readiness
+
+The Windows packed verification now repeats the complete installation lifecycle under Windows PowerShell 5.1, alongside PowerShell 7, with version-bound receipts and fail-closed aggregation. The 16.9.0 changelog covers the accumulated agent-owned CLI handoff, MCP fixes and Specialized Plugin refresh. Native Windows app interaction remains outside the observed coverage.
+
+## README Star History embeds
+
+Added the official theme-aware Star History chart and live global-rank badge to the existing [Star History section](README.md#star-history), retaining the direct chart link. Rank is fetched from Star History rather than hardcoded.

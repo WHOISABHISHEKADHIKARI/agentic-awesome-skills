@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
+import { verifyInstallation } from "./installation.mjs";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import { createRequire } from "node:module";
@@ -71,7 +72,7 @@ function runNode(script, args, options = {}) {
 }
 
 function parseCliSuccess(result, label) {
-  if (result.status !== 0 || result.stderr.trim()) fail(`${label}_FAILED`);
+  if (result.status !== 0 || result.stderr.trim()) fail(`${label}_FAILED: ${result.stderr || result.stdout || result.error?.message || result.status}`);
   const value = JSON.parse(result.stdout);
   if (value.ok !== true || value.schemaVersion !== 1) fail(`${label}_ENVELOPE_INVALID`);
   return value;
@@ -293,7 +294,7 @@ async function main() {
       frameworks: [],
       constraints: [],
     },
-    skillIds: ["ai-agents-architect"],
+    skillIds: ["ai-agents-architect", "debugging-strategies"],
   };
   fs.writeFileSync(selectionPath, `${stable(selection)}\n`, { mode: 0o600 });
   const manifestPath = path.join(workRoot, "aas-stack.json");
@@ -313,7 +314,7 @@ async function main() {
   assert.equal(fs.readFileSync(manifestPath, "utf8"), fs.readFileSync(replayManifestPath, "utf8"), "agent selection replay drifted");
   const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
   assert.equal(manifest.schemaVersion, 2);
-  assert.deepEqual(manifest.skills, [{ id: "ai-agents-architect" }]);
+  assert.deepEqual(manifest.skills, selection.skillIds.map((id) => ({ id })));
   assert.deepEqual(manifest.profile, selection.profile);
 
   const malformedSelectionPath = path.join(workRoot, "malformed-selection.json");
@@ -326,11 +327,20 @@ async function main() {
   const validated = parseCliSuccess(runNode(aasBin, ["stack", "validate", "--manifest", manifestPath], { cwd: projectRoot }), "VALIDATE");
   assert.equal(validated.status, "valid");
 
+  const beforeHandoff = { project: snapshotTree(projectRoot), cache: snapshotTree(cacheRoot) };
+  const handoff = parseCliSuccess(runNode(aasBin, [
+    "stack", "install-preview", "--manifest", manifestPath,
+    "--destination", path.join(projectRoot, ".agents", "skills"),
+  ], { cwd: projectRoot }), "INSTALL_PREVIEW");
+  assert.deepEqual(handoff.selectedSkillIds, manifest.skills.map((skill) => skill.id));
+  assert.equal(handoff.executes, false);
+  assert.equal(handoff.preview.args.at(-1), "--dry-run");
+  assert.deepEqual({ project: snapshotTree(projectRoot), cache: snapshotTree(cacheRoot) }, beforeHandoff);
+
   const planPath = path.join(workRoot, "plan.json");
   const planned = parseCliSuccess(runNode(aasBin, [
     "stack", "plan", "--manifest", manifestPath,
     "--target-root", projectRoot, "--cache-root", cacheRoot,
-    "--runtime-integrity", runtimeIntegrity,
     "--out", planPath,
     ...previewOutputArgs,
   ], { cwd: projectRoot }), "PLAN");
@@ -479,7 +489,10 @@ async function main() {
   const afterMcp = { project: snapshotTree(projectRoot), cache: snapshotTree(cacheRoot) };
   assert.deepEqual(afterMcp, beforeMcp, "MCP changed persistent project or cache state");
 
+  const installation = verifyInstallation({ packageRoot, workRoot, manifest, snapshotTree });
+
   const receipt = {
+    installation,
     schemaVersion: 1,
     assuranceProfile: "agent-first-preview-1",
     previewQualified: true,
@@ -489,7 +502,7 @@ async function main() {
     package: { name: metadata.name, version: metadata.version, tarballIntegrity: runtimeIntegrity, tarballSha256: sha256(tarballBytes) },
     selectionDigest: sha256(fs.readFileSync(selectionPath)),
     mcpContractDigest: sha256(stable({ toolNames, templates: ["aas://skills/{id}"] })),
-    lifecycle: { initialized: true, selected: true, composed: true, validated: true, planned: true, doctorReadOnly: true },
+    lifecycle: { initialized: true, selected: true, composed: true, validated: true, planned: true, doctorReadOnly: true, installPreviewPrepared: true, runtimeAutoResolved: true },
     writeGuards: { applyDisabledByDefault: true, recoveryDisabledByDefault: true, targetStateCreated: false },
     mcp: { localStdio: true, readOnlySnapshot: true, nativeAttemptObservation: "notEvaluated" },
     runtimeCache: { integrity: promoted.runtimeIdentity.integrity, closureDigest: promoted.runtimeIdentity.closureDigest },
