@@ -10,6 +10,7 @@ const core = require("../../lib/aas-v1");
 const {
   execute,
   main,
+  readJsonFile,
   windowsOutputDurabilityDetails,
   writeNewStackArtifactDirectory,
 } = require("../../lib/aas-v1/cli/main");
@@ -315,6 +316,95 @@ test("CLI normalizes native file errors without throwing or exposing paths", asy
     assert.deepEqual(fs.readdirSync(item.root), ["private-leaf"]);
     assert.equal(fs.readFileSync(leaf, "utf8"), "unchanged fixture");
   }
+});
+
+test("CLI JSON reads reject a file replaced between inspection and open", (context) => {
+  const item = fixture();
+  context.after(() => fs.rmSync(item.root, { recursive: true, force: true }));
+  const input = path.join(item.root, "input.json");
+  const replacement = path.join(item.root, "replacement.json");
+  fs.writeFileSync(input, '{"value":"original"}\n');
+  fs.writeFileSync(replacement, '{"value":"replacement"}\n');
+  const originalLstatSync = fs.lstatSync;
+  context.after(() => { fs.lstatSync = originalLstatSync; });
+  let replaced = false;
+  fs.lstatSync = function lstatAndReplace(candidate, ...args) {
+    const stat = originalLstatSync(candidate, ...args);
+    if (candidate === input && !replaced) {
+      replaced = true;
+      fs.renameSync(input, path.join(item.root, "inspected.json"));
+      fs.renameSync(replacement, input);
+    }
+    return stat;
+  };
+
+  assert.throws(() => readJsonFile(input), { code: "AAS_CLI_JSON_FILE_UNSAFE" });
+});
+
+test("CLI JSON reads do not block when the inspected file becomes a FIFO", (context) => {
+  if (process.platform === "win32") {
+    context.skip("POSIX FIFO behavior");
+    return;
+  }
+  const item = fixture();
+  context.after(() => fs.rmSync(item.root, { recursive: true, force: true }));
+  const input = path.join(item.root, "input.json");
+  const modulePath = path.join(ROOT, "tools/lib/aas-v1/cli/main.js");
+  const probe = `
+    const fs = require("node:fs");
+    const { spawnSync } = require("node:child_process");
+    const [input, modulePath] = process.argv.slice(1);
+    const { readJsonFile } = require(modulePath);
+    fs.writeFileSync(input, "{}\\n");
+    const originalLstatSync = fs.lstatSync;
+    let replaced = false;
+    fs.lstatSync = function lstatAndReplace(candidate, ...args) {
+      const stat = originalLstatSync(candidate, ...args);
+      if (candidate === input && !replaced) {
+        replaced = true;
+        fs.renameSync(input, input + ".original");
+        const result = spawnSync("mkfifo", [input], { encoding: "utf8" });
+        if (result.status !== 0) throw new Error(result.stderr || "mkfifo failed");
+      }
+      return stat;
+    };
+    try {
+      readJsonFile(input);
+      process.exitCode = 2;
+    } catch (error) {
+      if (error.code !== "AAS_CLI_JSON_FILE_UNSAFE") {
+        console.error(error);
+        process.exitCode = 3;
+      }
+    }
+  `;
+
+  const result = spawnSync(process.execPath, ["-e", probe, input, modulePath], {
+    encoding: "utf8",
+    timeout: 2_000,
+  });
+  assert.notEqual(result.error?.code, "ETIMEDOUT", "opening the raced FIFO must not block");
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+});
+
+test("CLI JSON reads enforce the byte limit when a file grows after inspection", (context) => {
+  const item = fixture();
+  context.after(() => fs.rmSync(item.root, { recursive: true, force: true }));
+  const input = path.join(item.root, "input.json");
+  fs.writeFileSync(input, "{}\n");
+  const originalLstatSync = fs.lstatSync;
+  context.after(() => { fs.lstatSync = originalLstatSync; });
+  let grown = false;
+  fs.lstatSync = function lstatAndGrow(candidate, ...args) {
+    const stat = originalLstatSync(candidate, ...args);
+    if (candidate === input && !grown) {
+      grown = true;
+      fs.writeFileSync(input, `${JSON.stringify({ padding: "x".repeat(4096) })}\n`);
+    }
+    return stat;
+  };
+
+  assert.throws(() => readJsonFile(input, 64), { code: "AAS_CLI_JSON_FILE_UNSAFE" });
 });
 
 test("CLI reports an invalid stack manifest as invalid input", async (context) => {
