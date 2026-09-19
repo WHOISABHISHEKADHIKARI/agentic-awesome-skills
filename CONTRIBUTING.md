@@ -467,6 +467,28 @@ tools: [claude, cursor, gemini]
 
 ---
 
+## Contributing a Community Showcase
+
+This community is promoted by its contributors sharing their best **written**
+creations — a skill, guide, tutorial, template, workflow, integration, or
+bundle. Showcases are written content, not attendance or speaking records.
+
+Open a [new showcase submission](https://github.com/sickn33/agentic-awesome-skills/issues/new?template=showcase-submission.yml).
+It auto-drafts a pull request from your answers — no need to hand-edit files.
+
+**Provenance is the main concern.** Your GitHub account is the author: your
+handle is locked to your account, and at least one proof link is required so
+authorship can be verified. GitHub-hosted proof links (a repository you own, a
+pull request or commit you authored) are machine-checked against your handle.
+Anything unverifiable goes to human review; a definitive mismatch is rejected.
+
+The draft is validated against `docs/community/showcase-schema.json`,
+link-checked, and triaged before a maintainer merges it. See
+`docs/community/SHOWCASE_TRIAGE.md` for the triage rubric and
+`docs/community/SHOWCASE_TEMPLATE.md` for the showcase file shape.
+
+---
+
 ## Contribution Checklist
 
 Before submitting your contribution:

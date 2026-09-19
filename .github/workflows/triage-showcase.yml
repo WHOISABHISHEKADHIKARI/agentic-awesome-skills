@@ -1,0 +1,167 @@
+name: Triage Community Showcase
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    paths:
+      - "docs/community/showcases/**"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: triage-showcase-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  triage-showcase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pull request content
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Checkout trusted base scripts
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted-base
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: "lts/*"
+
+      - name: Stage changed showcase files into the trusted tree
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          mkdir -p trusted-base/docs/community/showcases
+          files="$(git diff --name-only "${BASE_SHA}" "${HEAD_SHA}" -- docs/community/showcases/ || true)"
+          if [ -z "$files" ]; then
+            echo "no showcase files changed"
+            exit 0
+          fi
+          for file in $files; do
+            mkdir -p "$(dirname "trusted-base/$file")"
+            cp "$file" "trusted-base/$file"
+          done
+          printf 'changed=%s\n' "$(echo "$files" | tr '\n' ' ')" >> "$GITHUB_ENV"
+
+      - name: Validate staged showcase files
+        if: ${{ env.changed != '' }}
+        run: |
+          node trusted-base/tools/scripts/validate_community_showcase.js \
+            --schema docs/community/showcase-schema.json \
+            --showcases-dir docs/community/showcases \
+            --json \
+            $changed
+
+      - name: Resolve submitting account from the source issue
+        id: account
+        run: |
+          body="$(gh pr view "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --json body --jq '.body')"
+          issue_num="$(printf '%s' "$body" | grep -oE 'issues/[0-9]+' | head -n 1 | cut -d/ -f2)"
+          if [ -z "$issue_num" ]; then
+            echo "login=${{ github.event.pull_request.user.login }}" >> "$GITHUB_OUTPUT"
+            echo "account_age_days=unknown" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          account="$(gh api "repos/${{ github.repository }}/issues/$issue_num" --jq '{ login: .user.login, created_at: .user.created_at }')"
+          login="$(printf '%s' "$account" | python3 -c "import json,sys; print(json.load(sys.stdin)['login'])")"
+          created_epoch="$(printf '%s' "$account" | python3 -c "import json,sys,datetime; print(int(datetime.datetime.fromisoformat(json.load(sys.stdin)['created_at'].replace('Z','+00:00')).timestamp()))" 2>/dev/null || echo 0)"
+          now_epoch="$(date +%s)"
+          echo "login=$login" >> "$GITHUB_OUTPUT"
+          if [ "$created_epoch" -gt 0 ]; then
+            echo "account_age_days=$(( (now_epoch - created_epoch) / 86400 ))" >> "$GITHUB_OUTPUT"
+          else
+            echo "account_age_days=unknown" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Triage staged showcase files
+        id: triage
+        if: ${{ env.changed != '' }}
+        run: |
+          # We stay in the trusted tree so proof verification never executes
+          # contributor-supplied code from the head checkout.
+          verdict=approve
+          reasons_file="reasons.txt"
+          labels_file="labels.txt"
+          : > "$reasons_file"
+          : > "$labels_file"
+          for file in $changed; do
+            out_json="$(node trusted-base/tools/scripts/triage_community_showcase.js \
+              "trusted-base/$file" \
+              --author "${{ steps.account.outputs.login }}" \
+              --account-age-days "${{ steps.account.outputs.account_age_days }}")"
+            current="$(printf '%s' "$out_json" | python3 -c "import json,sys; print(json.load(sys.stdin)['verdict'])")"
+            case "$current" in
+              reject) verdict=reject ;;
+              review) [ "$verdict" != "reject" ] && verdict=review ;;
+            esac
+            printf '%s' "$out_json" | python3 -c "import json,sys; print('\n'.join(json.load(sys.stdin)['reasons']))" >> "$reasons_file"
+            printf '%s' "$out_json" | python3 -c "import json,sys; print('\n'.join(json.load(sys.stdin)['labels']))" >> "$labels_file"
+          done
+          echo "verdict=$verdict" >> "$GITHUB_OUTPUT"
+          # Restrict labels to the showcase set only.
+          comm -12 \
+            <(sort -u "$labels_file") \
+            <(printf 'showcase-submission\nready-for-triage\nauto-approve-eligible\nneeds-human-review\nshowcase-reject\nshowcase-stale\n' | sort) \
+            > labels-filtered.txt
+          label_list="$(paste -sd, labels-filtered.txt)"
+          echo "labels=$label_list" >> "$GITHUB_OUTPUT"
+          sed 's/^/    - /' "$reasons_file" > reasons-indented.txt
+
+      - name: Apply triage labels and comment
+        if: ${{ env.changed != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pr_number="${{ github.event.pull_request.number }}"
+          verdict="${{ steps.triage.outputs.verdict }}"
+          base_labels="showcase-submission,ready-for-triage"
+
+          case "$verdict" in
+            approve)
+              gh pr edit "$pr_number" --repo "${{ github.repository }}" \
+                --add-label "$base_labels,auto-approve-eligible" \
+                --remove-label "needs-human-review,showcase-reject" >/dev/null || true
+              {
+                printf '**Showcase approved and ready for a maintainer spot-check.**\n\n'
+                printf 'Proof links were machine-verified against the submitting GitHub handle.\n\n'
+                printf -- '- Labels: `auto-approve-eligible`\n'
+                printf -- '- Reasons:\n'
+                cat reasons-indented.txt
+              } > comment.txt
+              ;;
+            reject)
+              { printf '**Showcase rejected.** The submission does not meet the provenance gate and cannot be merged.\n\n'
+                printf -- '- Labels: `showcase-reject`\n'
+                printf -- '- Reasons:\n'
+                cat reasons-indented.txt
+                printf '\nThis pull request will close automatically after 14 days without activity.\n'
+                printf 'To resubmit, push a fix that satisfies the proof requirements.\n'
+              } > comment.txt
+              ;;
+            review)
+              gh pr edit "$pr_number" --repo "${{ github.repository }}" \
+                --add-label "$base_labels,needs-human-review" \
+                --remove-label "auto-approve-eligible,showcase-reject" >/dev/null || true
+              { printf '**Showcase needs human review.**\n\n'
+                printf 'Proof could not be fully machine-verified, so a maintainer must confirm authorship before merge.\n\n'
+                printf -- '- Labels: `needs-human-review`\n'
+                printf -- '- Reasons:\n'
+                cat reasons-indented.txt
+              } > comment.txt
+              ;;
+          esac
+          gh pr comment "$pr_number" --repo "${{ github.repository }}" --body-file comment.txt || true

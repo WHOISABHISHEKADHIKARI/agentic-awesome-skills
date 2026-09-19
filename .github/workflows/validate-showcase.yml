@@ -1,0 +1,66 @@
+name: Validate Community Showcase
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled]
+    paths:
+      - "docs/community/showcases/**"
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: validate-showcase-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate-showcase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pull request content
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Checkout trusted base scripts
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted-base
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: "lts/*"
+
+      - name: Stage changed showcase files into the trusted tree
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          mkdir -p trusted-base/docs/community/showcases
+          files="$(git diff --name-only "${BASE_SHA}" "${HEAD_SHA}" -- docs/community/showcases/ || true)"
+          if [ -z "$files" ]; then
+            echo "no showcase files changed"
+            exit 0
+          fi
+          for file in $files; do
+            mkdir -p "$(dirname "trusted-base/$file")"
+            cp "$file" "trusted-base/$file"
+            echo "staged: $file"
+          done
+          echo "changed=$(echo "$files" | tr '\n' ' ')" >> "$GITHUB_ENV"
+
+      - name: Validate staged showcase files
+        if: ${{ env.changed != '' }}
+        run: |
+          node trusted-base/tools/scripts/validate_community_showcase.js \
+            --schema docs/community/showcase-schema.json \
+            --showcases-dir docs/community/showcases \
+            --json \
+            $changed
