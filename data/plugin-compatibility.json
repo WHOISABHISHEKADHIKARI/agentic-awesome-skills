@@ -2076,6 +2076,25 @@
       "runtime_files": []
     },
     {
+      "id": "anti-slop-design",
+      "path": "skills/anti-slop-design",
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [],
+      "blocked_reasons": {
+        "codex": [],
+        "claude": []
+      },
+      "runtime_files": []
+    },
+    {
       "id": "anti-sycophancy",
       "path": "skills/anti-sycophancy",
       "targets": {
@@ -18683,6 +18702,25 @@
       "runtime_files": []
     },
     {
+      "id": "google-no-code",
+      "path": "skills/google-no-code",
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [],
+      "blocked_reasons": {
+        "codex": [],
+        "claude": []
+      },
+      "runtime_files": []
+    },
+    {
       "id": "google-sheets-automation",
       "path": "skills/google-sheets-automation",
       "targets": {
@@ -30911,6 +30949,25 @@
       "runtime_files": []
     },
     {
+      "id": "resumable-implementation-contracts",
+      "path": "skills/resumable-implementation-contracts",
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [],
+      "blocked_reasons": {
+        "codex": [],
+        "claude": []
+      },
+      "runtime_files": []
+    },
+    {
       "id": "returns-reverse-logistics",
       "path": "skills/returns-reverse-logistics",
       "targets": {
@@ -39391,6 +39448,25 @@
       "runtime_files": []
     },
     {
+      "id": "weather-observation-fetching",
+      "path": "skills/weather-observation-fetching",
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [],
+      "blocked_reasons": {
+        "codex": [],
+        "claude": []
+      },
+      "runtime_files": []
+    },
+    {
       "id": "weaviate",
       "path": "skills/weaviate",
       "targets": {
@@ -40937,10 +41013,10 @@
     }
   ],
   "summary": {
-    "total_skills": 2130,
+    "total_skills": 2134,
     "supported": {
-      "codex": 2049,
-      "claude": 2071
+      "codex": 2053,
+      "claude": 2075
     },
     "blocked": {
       "codex": 81,
