@@ -135,7 +135,7 @@ for reuse. All links verified resolving at scrape time.
 - Headshot: https://kathmandu.wordcamp.org/2026/files/2026/07/DSC02604-scaled.jpg
 - Speaker profiles:
   - GitHub: https://github.com/WHOISABHISHEKADHIKARI
-  - LinkedIn: https://www.linkedin.com/in/whoisabhishekadhikari/
+  - LinkedIn: https://www.linkedin.com/in/whoisabhishek/
   - WordPress: https://profiles.wordpress.org/abhu1254/
   - Web: https://krishihimalaya.com/
 
@@ -145,3 +145,4 @@ for reuse. All links verified resolving at scrape time.
 - `prompt-engineering-patterns`
 - `linkedin-profile-optimizer` (demonstrated in Demo 5)
 - `cv-generator` (demonstrated in Demo 6)
+- `google-forms-creator` (Live Contributed)
