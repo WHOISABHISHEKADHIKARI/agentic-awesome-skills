@@ -22,7 +22,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cutoff_epoch="$(date -u -d '14 days ago' +%s)"
-          cutoff="$(date -u -d '14 days ago' +%Y-%m-%dT%H:%M:%SZ)"
 
           pr_list="$(gh pr list --repo "${{ github.repository }}" \
             --state open \

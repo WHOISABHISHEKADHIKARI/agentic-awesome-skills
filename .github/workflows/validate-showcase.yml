@@ -44,23 +44,25 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           mkdir -p trusted-base/docs/community/showcases
-          files="$(git diff --name-only "${BASE_SHA}" "${HEAD_SHA}" -- docs/community/showcases/ || true)"
-          if [ -z "$files" ]; then
+          mapfile -t changed < <(git diff --name-only "${BASE_SHA}" "${HEAD_SHA}" -- docs/community/showcases/ 2>/dev/null || true)
+          if [ "${#changed[@]}" -eq 0 ]; then
             echo "no showcase files changed"
             exit 0
           fi
-          for file in $files; do
+          printf '%s\n' "${changed[@]}" > changed-files.txt
+          for file in "${changed[@]}"; do
             mkdir -p "$(dirname "trusted-base/$file")"
             cp "$file" "trusted-base/$file"
             echo "staged: $file"
           done
-          echo "changed=$(echo "$files" | tr '\n' ' ')" >> "$GITHUB_ENV"
+          echo "showcase_changed=true" >> "$GITHUB_ENV"
 
       - name: Validate staged showcase files
-        if: ${{ env.changed != '' }}
+        if: ${{ env.showcase_changed == 'true' }}
         run: |
+          mapfile -t showcase_args < changed-files.txt
           node trusted-base/tools/scripts/validate_community_showcase.js \
             --schema docs/community/showcase-schema.json \
             --showcases-dir docs/community/showcases \
             --json \
-            $changed
+            "${showcase_args[@]}"
