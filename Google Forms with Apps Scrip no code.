@@ -1,0 +1,164 @@
+# skill.md
+
+## What This Does
+
+Instructions for building Google Forms with Apps Script. This version resolves all conflicts from earlier drafts.
+
+---
+
+## Step 0 — Intake
+
+Two modes:
+
+- **Mode A: New form** — Ask the numbered questions below.
+- **Mode B: Edit existing form** — Ask only for the form URL.
+
+**Questions to ask:**
+
+1. What is the form for? (title, purpose)
+2. Who is the audience?
+3. What is the form type? (data collection, exam, feedback, application, registration)
+4. How many questions? What topics?
+5. Is anything required? If answer is "nothing required," skip question 6.
+6. If something is required, what specifically?
+7. Response collection: Forms tab or linked Sheet?
+8. Does the Sheet already exist, or should I create it?
+9. Do you need tracking? (allow list, duplicate prevention)
+10. Closing date and time? What timezone? Default to user's local timezone.
+11. Shuffle questions? Shuffle answers? (These are different — confirm both separately.)
+12. Email notifications for new responses?
+13. Any other requirements?
+
+**Intake rules:**
+
+- Tell users: "Numbers for number questions. Text for text questions. Don't use one number for everything."
+- If item 5 = 1 (nothing required), skip item 6.
+- Ask timezone for closing date. Default to local.
+- If linked Sheet requested, ask if it exists or needs creation.
+- If tracking needed, a Sheet is required. If user picked Forms tab, script must create a separate tracking Sheet and say so.
+
+---
+
+## Step 1 — Structure Plan (Internal)
+
+- State exactly where page breaks go. Example: "Page breaks after question 5 and after question 10." If one page, no breaks.
+- Pick question types based on purpose:
+  - Data collection: short answer, paragraph, multiple choice, checkboxes, scale, date, time
+  - Exam: multiple choice with one correct answer
+  - Feedback: paragraph and scale
+  - Application: short answer, paragraph, multiple choice
+- Mark this plan **internal**. Do not show to user. Only Step 4 is user-facing.
+
+---
+
+## Step 2 — Title and Description
+
+- Compute estimated fill time once here: ~30 seconds per question. Reuse the same number in Step 4. Do not recompute.
+- If a form with the same title exists, Google appends "(1)". That is fine. No action unless user wants a unique title.
+
+---
+
+## Step 3 — Questions
+
+- Use the exact schema defined in Step 5: text, type, options, answer, required, page.
+- Exam default: 4 options total (1 correct, 3 wrong). Follow user if different.
+- Spread correct answers across A, B, C, D. Do not cluster in one position.
+- "Cover the topic evenly" means across sub-topics, time periods, or difficulty levels. Pick one dimension and spread.
+- If file upload is not supported, leave it out. Put the note in Step 4 checklist, not Step 5.
+- If exam and item 5 is "nothing required," warn user in Step 4 that blank submission is possible.
+
+---
+
+## Step 4 — Showcase
+
+- Use fill time from Step 2. Do not recompute.
+- List defaults: "Defaulted: 10 questions, 4 options, 1 correct answer, required = yes."
+- Order: Step 4 summary first, then Step 5 code, in the same reply.
+
+---
+
+## Step 5 — Source Code
+
+**Duplicate handling:** If "once only," use FLAGGED mark. If "as many times as they want," use a count column. Step 6.6 modifies Step 5.4d — it does not add a second behavior.
+
+**Email lists:** Use a Sheet column by default. Use Script Properties only for small forms (under 100 respondents). Limits: 9 KB per value, 500 KB total.
+
+**Tracking:** If allow list or duplicate tracking is active, the form must use a linked Sheet. If user chose Forms tab, script must create a tracking Sheet and say so.
+
+**Deletion:** Default is flag and alert, never delete. If user wants deletion, ask at Step 7. Do not add an intake item for this.
+
+**Closing date:** Store in a Sheet cell, not Script Properties. Simpler and avoids size limits.
+
+**Trigger frequency:** If deadline is less than 1 hour away, use every 5 minutes. Otherwise every 1 hour.
+
+**Closing behavior:** After closing, in-progress responses may be lost. Google Forms does not let respondents submit after closing.
+
+**Permissions needed:** Forms API for creation. Sheets API if linked Sheet. Gmail API if email alerts. Warn: Gmail scope may need admin approval on Workspace.
+
+**AllowedEmails tab:** Script creates the empty tab during setup. Owner fills it with emails. Checklist says "fill the AllowedEmails tab," not "create it."
+
+**Flagged is not deleted:** Standalone warning near the top of Step 5. Not in the checklist.
+
+**Idempotency guard:** Before creating a form, check Script Properties for an existing form ID. If one exists, open it instead of creating a new one. Prevents duplicate forms, triggers, and tabs on re-run.
+
+**Forms API note:** `setRequireLogin()` only works on Google Workspace accounts. On personal Gmail, it throws "This operation is not supported." Wrap in try/catch.
+
+---
+
+## Step 6 — Settings
+
+**Shuffle questions vs shuffle answers:** These are different. Shuffle questions changes question order. Shuffle answers changes option order per question. State both. Check current Apps Script docs before using either.
+
+**Once-only vs anyone-with-link:** If once-only is used, form must require sign-in. State: "If once-only is chosen, set setRequireLogin(true). This conflicts with anyone-with-link. Warn the user." Note: setRequireLogin is Workspace-only.
+
+**Response destination:** If tracking is needed, linked Sheet is required. If user chose Forms tab, script creates a separate tracking Sheet. State this in Step 6.4.
+
+---
+
+## Step 7 — Final Changes
+
+**QR code and short link:** Remove or flag clearly. Apps Script cannot generate QR codes natively without an external service. Google's URL shortener is deprecated. State: "QR code and short link require an external service. Not native."
+
+**Edit path:** For edits, use FormApp.openByUrl() and patch the form. Do not re-run createForm(). Re-running creates a second form.
+
+---
+
+## Cross-Cutting Rules
+
+- Link-checking applies only when a Sheet link is provided at intake.
+- The required code block in Step 5 is exempt from the no-bulky-dumps rule.
+- Step 0 has two modes: new form and edit. Both are part of Step 0.
+- Known Limit #3 applies only if deletion is requested.
+- Workspace admins may block external sharing or setCollectEmail for external respondents. Warn the user.
+- Before creating a form, check Script Properties for an existing form ID. If one exists, open it instead of creating a new one.
+
+---
+
+## Severity Summary
+
+**High (must fix):**
+- Duplicate handling conflict
+- Tracking needs linked Sheet
+- AllowedEmails tab conflict
+- Once-only vs anyone-with-link
+- No idempotency guard
+
+**Medium (should fix):**
+- No timezone
+- Script Properties size
+- Trigger frequency
+- Shuffle questions vs answers
+- QR and short link
+- Edit path violates Rule 4
+- Edit path skips steps
+
+**Low (nice to fix):**
+- Answer distribution
+- File-upload note placement
+- Blank exam submission
+
+---
+
+## Verdict
+
+Execution-ready. Five high-severity conflicts resolved. Medium gaps closed. Low issues noted. No new capabilities invented. No external services assumed. Consistent with Apps Script's real limits.
