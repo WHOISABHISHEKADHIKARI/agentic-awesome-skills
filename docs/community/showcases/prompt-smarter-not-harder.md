@@ -105,22 +105,22 @@ files under `docs/community/showcases/media/` and use the relative path.
 
 1. **On stage** — opening the talk "Prompt Smarter, Not Harder" at WordCamp
    Kathmandu 2026.
-   ![Abhishek Adhikari on stage at WordCamp Kathmandu 2026](PLACEHOLDER-1-on-stage)
+   ![Abhishek Adhikari on stage at WordCamp Kathmandu 2026](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1024'%20height='512'%3E%3Crect%20width='1024'%20height='512'%20fill='%23e9e9e9'/%3E%3Ctext%20x='512'%20y='256'%20font-family='sans-serif'%20font-size='34'%20text-anchor='middle'%20fill='%23777777'%3EPhoto%20pending%20upload%3C/text%3E%3C/svg%3E)
 
 2. **The topic** — how to contribute to open-source projects using prompt
    workflows and skills.
-   ![Prompt workflow and skills demo on screen](PLACEHOLDER-2-prompt-workflow)
+   ![Prompt workflow and skills demo on screen](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1024'%20height='512'%3E%3Crect%20width='1024'%20height='512'%20fill='%23e9e9e9'/%3E%3Ctext%20x='512'%20y='256'%20font-family='sans-serif'%20font-size='34'%20text-anchor='middle'%20fill='%23777777'%3EPhoto%20pending%20upload%3C/text%3E%3C/svg%3E)
 
 3. **Live demo** — contributing in real time with the prompt workflow and
    skills, as the assistant's reasoning updates.
-   ![Live contribution demo during the talk](PLACEHOLDER-3-live-demo)
+   ![Live contribution demo during the talk](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1024'%20height='512'%3E%3Crect%20width='1024'%20height='512'%20fill='%23e9e9e9'/%3E%3Ctext%20x='512'%20y='256'%20font-family='sans-serif'%20font-size='34'%20text-anchor='middle'%20fill='%23777777'%3EPhoto%20pending%20upload%3C/text%3E%3C/svg%3E)
 
 4. **The room** — the audience following the contribution walkthrough.
-   ![Audience at WordCamp Kathmandu 2026](PLACEHOLDER-4-audience)
+   ![Audience at WordCamp Kathmandu 2026](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1024'%20height='512'%3E%3Crect%20width='1024'%20height='512'%20fill='%23e9e9e9'/%3E%3Ctext%20x='512'%20y='256'%20font-family='sans-serif'%20font-size='34'%20text-anchor='middle'%20fill='%23777777'%3EPhoto%20pending%20upload%3C/text%3E%3C/svg%3E)
 
 5. **The community** — fellow speakers, organizers, and contributors; and the
    full circle to this repository via PR #1497.
-   ![Community of contributors at WordCamp Kathmandu 2026](PLACEHOLDER-5-community)
+   ![Community of contributors at WordCamp Kathmandu 2026](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1024'%20height='512'%3E%3Crect%20width='1024'%20height='512'%20fill='%23e9e9e9'/%3E%3Ctext%20x='512'%20y='256'%20font-family='sans-serif'%20font-size='34'%20text-anchor='middle'%20fill='%23777777'%3EPhoto%20pending%20upload%3C/text%3E%3C/svg%3E)
 
 ## Talk Metadata (scraped from the WordCamp site)
 
