@@ -91,6 +91,9 @@ Photos from the workshop floor, named `wordcamp-kathmandu-2026-<name>.jpg`
 under `docs/community/showcases/media/`. Alt text and titles carry the search
 optimization; the captions read as the trainer's point of view.
 
+Workshop trainer: [Abhishek Adhikari](https://abhishekadhikari.com) — trainer
+bio and contact at [abhishekadhikari.com](https://abhishekadhikari.com).
+
 1. Opening the Prompt Smarter, Not Harder workshop at WordCamp Kathmandu
    2026 with attendees loading laptops.
    ![AI trainer opening the Prompt Smarter, Not Harder workshop at WordCamp Kathmandu 2026](media/wordcamp-kathmandu-2026-workshop-1.jpg "AI Trainer of Nepal — Abhishek Adhikari — opening a prompt engineering workshop at WordCamp Kathmandu 2026")
@@ -126,6 +129,7 @@ for reuse. All links verified resolving at scrape time.
 - Event: WordCamp Kathmandu 2026
 - Session: Prompt Smarter, Not Harder
 - Session page: https://kathmandu.wordcamp.org/2026/session/prompt-smarter-not-harder/
+- Slides: https://new.express.adobe.com/publishedV2/urn:aaid:sc:AP:3881f45a-2e25-5662-b8af-2450f5cc98e3
 - Dates: September 18-19, 2026
 - Venue: Alice Receptions, Gairidhara, Kathmandu
 - Headshot: https://kathmandu.wordcamp.org/2026/files/2026/07/DSC02604-scaled.jpg
@@ -133,6 +137,7 @@ for reuse. All links verified resolving at scrape time.
   - GitHub: https://github.com/WHOISABHISHEKADHIKARI
   - LinkedIn: https://www.linkedin.com/in/whoisabhishek/
   - WordPress: https://profiles.wordpress.org/abhu1254/
+  - Site: https://abhishekadhikari.com
   - Web: https://krishihimalaya.com/
 
 ## Related Community Skills
