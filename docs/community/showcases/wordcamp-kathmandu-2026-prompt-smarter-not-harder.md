@@ -121,11 +121,9 @@ bio and contact at [abhishekadhikari.com](https://abhishekadhikari.com).
    skills, contribute back.
    ![AI trainer closing the Prompt Smarter, Not Harder workshop](media/wordcamp-kathmandu-2026-closing.jpg "AI Trainer of Nepal — Abhishek Adhikari — closing the workshop on reusable prompts and skill contribution")
 
-## Talk Metadata (scraped from the WordCamp site)
+## Talk Metadata  
 
-Source: official WordCamp Kathmandu 2026 speaker and session pages, scraped
-for reuse. All links verified resolving at scrape time.
-
+Source: official WordCamp Kathmandu 2026 speaker and session pages 
 - Event: WordCamp Kathmandu 2026
 - Session: Prompt Smarter, Not Harder
 - Session page: https://kathmandu.wordcamp.org/2026/session/prompt-smarter-not-harder/
