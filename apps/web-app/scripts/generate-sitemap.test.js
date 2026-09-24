@@ -2,6 +2,10 @@ import { describe, it, expect } from 'vitest';
 import { buildSitemap, DEFAULT_TOP_SKILL_COUNT, getSeoLandingPaths, selectTopSkillEntries } from './generate-sitemap.js';
 
 describe('sitemap generation script helpers', () => {
+  it('uses the custom AAS domain as the default sitemap origin', () => {
+    expect(buildSitemap([], 0)).toContain('https://aaskills.tech/</loc>');
+  });
+
   it('builds top skill entries sorted by stars/date/name without duplicates', () => {
     const catalog = [
       { id: 'alpha', stars: 5, date_added: '2026-01-01' },
@@ -23,6 +27,7 @@ describe('sitemap generation script helpers', () => {
     const xml = buildSitemap(catalog, 1, 'https://example.com');
 
     expect(xml).toContain('https://example.com/</loc>');
+    expect(xml).toContain('https://example.com/core/</loc>');
     expect(xml).toContain('https://example.com/workbench/</loc>');
     expect(xml).toContain('https://example.com/topics/antigravity-cli-skills/</loc>');
     expect(xml).toContain('https://example.com/skill/gamma/</loc>');
@@ -47,6 +52,7 @@ describe('sitemap generation script helpers', () => {
     const xml = buildSitemap(catalog, 0, 'https://example.com');
 
     expect(xml).toContain('https://example.com/</loc>');
+    expect(xml).toContain('https://example.com/core/</loc>');
     expect(xml).toContain('https://example.com/workbench/</loc>');
     expect(xml).toContain('https://example.com/topics/github-ai-skills-repository/</loc>');
     expect(xml).not.toContain('https://example.com/skill');

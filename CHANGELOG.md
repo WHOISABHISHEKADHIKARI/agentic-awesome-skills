@@ -7,6 +7,413 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [18.4.0] - 2026-09-24 - "Weather Workflows, Agent Memory, and aaskills.tech"
+
+> Adds five weather-data pipeline skills and an agent memory-discipline skill, refreshes the Jev Social runtime pin, and serves the hosted catalog from `aaskills.tech`.
+
+A catalog release for Claude Code, Cursor, Codex CLI, Gemini CLI, and related AI coding assistants. It expands the catalog to **2,457** skills and preserves existing installation interfaces.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@18.4.0`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Added
+
+- **noaa-radar-satellite-fetching (#1585)** — retrieve NEXRAD and GOES products from public cloud archives with verified site, product, channel, sector, and scan-time selection.
+- **weather-model-run-discovery (#1585)** — resolve the newest complete numerical weather prediction cycle across provider mirrors without downloading full payloads.
+- **weather-pipeline-performance-diagnosis (#1585)** — measure discovery, transfer, parsing, scientific processing, and rendering separately before changing code.
+- **weather-data-reproducibility (#1585)** — record and verify provenance manifests for weather inputs and derived artifacts, including object identity, selections, software versions, and hashes.
+- **weather-data-lifecycle-management (#1585)** — define ownership, retention, and cleanup for temporary files, interactive data, caches, and exports.
+- **agent-memory-discipline (#1572)** — standing rules for when an agent recalls from long-term memory before acting and when it saves decisions, corrections, and failures afterwards, backend-neutral and CC0-1.0.
+
+### Changed
+
+- **Jev Social runtime pin (#1580)** — move every executable and license reference to the tested `v0.1.5` commit `782d809c68e2015536359aa7dceede9a3cdbb7f1`, keeping the read-only browser boundary and `risk: critical` classification.
+- **Hosted catalog domain** — serve the Pages site from `https://aaskills.tech/`, use root-relative assets, and update canonical metadata, sitemap, repository links, and legacy redirect destinations.
+- **Pages deployment** — deploy the catalog only from protected `main` or an exact immutable release tag.
+
+### Validation scope
+
+Exact-head maintainer review for changed skill content, protected source PRs, repository validation and tests, docs security, protected CI and CodeQL, canonical synchronization, exact-release Pages deployment from the immutable `v18.4.0` tag, and live current/legacy route verification.
+
+---
+
+## [18.3.0] - 2026-09-23 - "Six New Skills and Safer Telegram Ads"
+
+> Adds six community skills for export analysis, DALI, resistor sizing, electronic shelf labels, Marlin, and OneRoster, and tightens Telegram Mini App advertising guidance.
+
+A catalog release for Claude Code, Cursor, Codex CLI and Gemini CLI.
+It merges #1558–#1564 and the associated maintainer batch while expanding the **2,451**-skill catalog on Core. Existing installation interfaces remain supported.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@18.3.0`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Added
+
+- **chatexport-need-miner (#1558)** — analyze a ChatGPT export locally to find recurring needs and organize evidence.
+- **dali-short-address-commissioner (#1559)** — guide DALI short-address commissioning.
+- **eol-resistor-calculator (#1560)** — calculate and check end-of-line resistor configurations.
+- **esl-price-sync (#1561)** — plan and troubleshoot electronic shelf-label price synchronization.
+- **marlin-bed-leveling (#1562)** — guide Marlin bed-leveling setup and troubleshooting.
+- **oneroster-csv-validator (#1563)** — validate and diagnose OneRoster CSV exports.
+
+### Changed
+
+- **Telegram Mini App monetization (#1564)** — add native and rewarded ad guidance with user choice, privacy boundaries, and server-side validation requirements.
+
+### Validation scope
+
+Exact-head maintainer review for changed skill content, protected source PRs, repository validation and tests, docs security, protected CI and CodeQL, canonical synchronization, and release-only Pages deployment from the immutable `v18.3.0` tag.
+
+---
+
+## [18.2.0] - 2026-09-22 - "Catalog Skills and Hosted Save Sync"
+
+> Ships one new community skill, refreshes Jev Social, fixes hosted catalog save
+> sync across views, and repairs `ui-ux-pro-max` on Python 3.11.
+
+A catalog patch for Claude Code, Cursor, Codex CLI and Gemini CLI.
+It merges #1551, #1549, #1545, and maintainer lane #1553 while keeping the
+**2,445**-skill catalog on Core. Existing installation interfaces remain supported.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@18.2.0`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Added
+
+- **marketing-mindset (#1545)** — marketer decision framework for early-stage B2B/SaaS work (Axel Freeman, MIT).
+
+### Changed
+
+- **Jev Social (#1549)** — refresh skill guidance to upstream `v0.1.4` with explicit TikTok media-download boundaries.
+
+### Fixed
+
+- **Hosted catalog saves (#1551)** — sync local saved-skill state across mounted hooks and cross-tab `storage` events.
+- **ui-ux-pro-max (#1553)** — avoid Python &lt; 3.12 `SyntaxError` in `design_system.py` anti-pattern formatting (maintainer lane for fork-blocked #1550).
+
+### Validation scope
+
+Maintainer attestation on exact merge heads, protected source PRs, repository validation, documentation-security checks, protected CI, CodeQL, and release-only Pages deploy from the immutable `v18.2.0` tag.
+
+---
+
+## [18.1.0] - 2026-09-21 - "Hosted Catalog Save-State Hardening"
+
+> Hardens browser-local “saved skill” state on the hosted catalog so malformed
+> `localStorage` payloads cannot show false positives.
+
+A catalog-surface patch for Claude Code, Cursor, Codex CLI and Gemini CLI.
+It ships the hosted web fix from #1542 while keeping the **2,444**-skill catalog
+on Core. Existing installation interfaces remain supported.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@18.1.0`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Fixed
+
+- **Hosted catalog local saves (#1542)** — accept only boolean entries when parsing
+  `saved_skills` / legacy `user_stars` records; ignore strings, numbers, and
+  array-shaped storage so corrupted browser data cannot mark skills as saved.
+
+### Validation scope
+
+Maintainer attestation on exact merge head, protected source PR #1542,
+repository validation, documentation-security checks, protected CI, CodeQL,
+and release-only Pages deploy from the immutable `v18.1.0` tag.
+
+---
+
+## [18.0.0] - 2026-09-21 - "Curated Upstream Sync and Jev Social"
+
+> Adds **41** maintainer-reviewed skills from README-credited upstream sources,
+> including `jev-social`, vendor gaps (Apify, Vercel, Expo, Remotion,
+> Hugging Face, Neon, Longbridge, Makepad), and selected community packs.
+
+A major catalog release for Claude Code, Cursor, Codex CLI and Gemini CLI.
+It merges the curated upstream batch (#1539) with per-skill maintainer review
+documented in `docs/maintainers/curated-50-upstream-review-2026-09-21.md`,
+refreshing catalog surfaces for the expanded skill registry. Existing installation
+interfaces remain supported.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@18.0.0`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Added
+
+- **41 curated upstream skills (#1539)** — reviewed import from official and
+  community README-credited repositories; ledger in
+  `docs/maintainers/curated-50-upstream-review-2026-09-21.md`.
+- **`jev-social`** — read-only Jev/socai social research routing.
+
+### Validation scope
+
+Maintainer attestation on exact merge head, repository validation,
+documentation-security checks, protected CI, CodeQL, canonical synchronization,
+and release-only Pages deploy from the immutable `v18.0.0` tag.
+
+---
+
+## [17.8.4] - 2026-09-20 - "Core SearchAction for Pages SEO"
+
+> Aligns the Pages SEO verifier SearchAction expectation with `/core` so the
+> neon landing release can deploy to GitHub Pages.
+
+A catalog-surface hotfix for Claude Code, Cursor, Codex CLI and Gemini CLI.
+It finishes publishing the neon homepage to the hosted site while keeping the
+**2,406**-skill catalog at `/core`. Existing installation interfaces remain
+supported.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@17.8.4`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Fixed
+
+- **Pages SearchAction gate** — expect WebSite SearchAction targets at
+  `/core/?q={search_term_string}` after the catalog moved off `/`.
+
+### Validation scope
+
+Protected source PR, release checks for v17.8.4, and the release-only Pages
+deploy from the immutable `v17.8.4` tag.
+
+---
+
+## [17.8.3] - 2026-09-20 - "Landing JSON-LD Identity for Pages"
+
+> Fixes neon landing SoftwareSourceCode/WebSite JSON-LD so the release-only
+> Pages SEO gate accepts `/` after the catalog moved to `/core`.
+
+A catalog-surface hotfix for Claude Code, Cursor, Codex CLI and Gemini CLI.
+It completes hosted deployment of the neon homepage while keeping the
+**2,406**-skill catalog at `/core`. Existing installation interfaces remain
+supported.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@17.8.3`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Fixed
+
+- **Landing JSON-LD identities** — dedupe root `sameAs`, align WebSite URL shape,
+  and treat `/` as the brand landing while `/core` keeps rich catalog identity
+  checks required by the Pages SEO verifier.
+
+### Validation scope
+
+Protected source PR, release checks for v17.8.3, and the release-only Pages
+deploy from the immutable `v17.8.3` tag.
+
+---
+
+## [17.8.2] - 2026-09-20 - "Pages Deploy for Neon Landing"
+
+> Unblocks GitHub Pages for the neon AAS homepage by allowing `/core` in the
+> SEO sitemap verifier and verifying Core catalog metadata on `/core`.
+
+A catalog-surface hotfix for Claude Code, Cursor, Codex CLI and Gemini CLI.
+It finishes publishing the neon landing from #1527 / v17.8.1 onto the hosted
+site while keeping the **2,406**-skill catalog at `/core`. Existing installation
+interfaces remain supported.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@17.8.2`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Fixed
+
+- **Pages SEO gate for `/core`** — treat `/core` as an allowed non-skill sitemap
+  route, assert the prerendered Core catalog page, and keep landing `/` on
+  WebPage discovery metadata so the release-only Pages deploy can ship the neon
+  homepage.
+- **Plugins coverage timeout** — raise the specialized plugins render test
+  timeout so release npm publication is not blocked by a slow CI worker.
+
+### Validation scope
+
+Source PR plus protected release checks for v17.8.2, including web-app SEO
+verification, coverage, CI, CodeQL, and the release-only Pages deploy from the
+immutable `v17.8.2` tag.
+
+---
+
+## [17.8.1] - 2026-09-20 - "Neon AAS Landing Homepage"
+
+> Ships a brand-first neon AAS homepage at `/` and moves the searchable catalog
+> to `/core`, with matching SEO, sitemap, and prerender routes.
+
+A catalog-surface release for Claude Code, Cursor, Codex CLI and Gemini CLI.
+It publishes the neon AAS landing experience (#1527) while keeping the
+**2,406**-skill catalog on Core. Existing installation interfaces remain
+supported.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@17.8.1`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Added
+
+- **Neon AAS landing homepage (#1527)** — brand-first intro at `/` with install
+  hero, agent compatibility tiles, Core/Workbench/Plugins surfaces, guided
+  Search→Choose→Validate→Preview steps, and maintainer strip. The searchable
+  catalog now lives at `/core` with updated nav, SEO, sitemap, and prerender
+  routes.
+
+### Improved
+
+- Pages redirect bridge sitemap route lock bumped for `/core`.
+
+### Validation scope
+
+PR #1527 passed repository web-app tests and typecheck, protected CI
+(`pr-policy`, `pr-evidence`, `source-validation`, `artifact-preview`), CodeQL,
+dependency review, and maintainer attestation on the exact merge head, then
+canonical synchronization.
+
+---
+
+## [17.8.0] - 2026-09-20 - "OpenCode #126 Catalog Expansion and Jev Judgment Routing"
+
+> Imports 264 reviewed skills from opencode-skills-collection #126 across DevSec,
+> BugHunter, and starter bundles, plus `jev-use` for batched judgment-model
+> routing through MCP.
+
+A maintenance release for Claude Code, Cursor, Codex CLI and Gemini CLI.
+It merges the FrancoStino opencode-skills-collection #126 batch (#1512–#1517)
+and the community `jev-use` skill (#1511), refreshes catalog and plugin surfaces
+for **2,406** skills, and converges canonical indexes through the protected bot
+lane. Existing installation interfaces remain supported.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@17.8.0`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Added
+
+- **OpenCode #126 batch (264 skills, #1512–#1517)** — docs-only DevSec compliance,
+  DevOps, infrastructure, and security skills; gated BugHunter assessment workflows;
+  and starter bundles (productivity, career-ops, geo/SEO, and related collections)
+  sourced from the MIT-licensed opencode-skills-collection #126 import, with
+  maintainer repairs for policy, provenance, and documentation-security gates.
+- **`jev-use` (#1511)** — routes enumerable no-text judgment steps (success checks,
+  option picks, risk gates) to the Jev judgment model through `jev_judge` and
+  `jev_gate` MCP tools, with explicit escalation back to the orchestrator for
+  steps that require generated text or non-enumerable choices.
+
+### Improved
+
+- Refreshed canonical indexes, catalogs, plugin mirrors, editorial bundles, and
+  web assets for the 2,406-skill release.
+
+### Validation scope
+
+PRs #1512–#1517 and #1511 passed maintainer attestation on their exact merge
+heads, repository validation, reference and documentation-security checks,
+protected CI, CodeQL, dependency review, and canonical synchronization.
+Tessl was unavailable for several heads; maintainer semantic review covered
+every changed canonical skill subtree.
+
+Thanks to @FrancoStino (#1512–#1517) for the opencode-skills-collection #126
+import and to @shitianfang (#1511) for `jev-use`.
+
+---
+
+## [17.7.0] - 2026-09-19 - "YYLO Ledger Skills Suite"
+
+> Adds seven community skills for YYLO Ledger task, wiki, workflow, and artifact
+> workflows plus the Ralph loop executor, with refreshed catalog surfaces.
+
+A maintenance release for Claude Code, Cursor, Codex CLI and Gemini CLI.
+It merges seven YYLO skills through the protected maintainer workflow, refreshes
+catalog and plugin surfaces for **2,141** skills, and closes a redundant Snyk
+dependency PR that violated the source-only contract. Existing installation
+interfaces remain supported.
+
+### Start here
+
+- Install: `npx agentic-awesome-skills@17.7.0`
+- [Choose your tool](README.md#choose-your-tool)
+- [Best skills by tool](README.md#best-skills-by-tool)
+- [Bundles](docs/users/bundles.md)
+- [Workflows](docs/users/workflows.md)
+
+### Added
+
+- `artifact-yylo`: capture and retrieve durable YYLO Ledger artifact Records with
+  secret-safe immutable evidence (source: `yylo-dev/yylo-skills`).
+- `ledger-tasks-yylo`: YYLO Ledger task lifecycle, dependencies, routing, and
+  registry-aware cross-project access.
+- `plan-ledger-tasks-yylo`: concise PDR plus implementation-sized Ledger tasks when
+  the user explicitly asks to plan work.
+- `ralph-loop-yylo`: execute one explicitly assigned Ledger task through the Ralph
+  loop to a validated queued commit (`risk: critical`; no push/deploy).
+- `understand-project-yylo`: read-only architecture and validation-loop inspection
+  before planning or implementation.
+- `wiki-yylo`: revision-safe YYLO wiki Records without direct Ledger storage edits.
+- `workflow-yylo`: validated workflow Records with explicit storage/execution/evidence
+  boundaries.
+
+### Improved
+
+- Refreshed canonical indexes, catalogs, plugin mirrors, editorial bundles, and
+  web assets for the 2,141-skill release.
+
+### Validation scope
+
+PR #1507 passed maintainer attestation at head `d588e6b5b8546bd6a45d32654cb1c9b05d858258`,
+repository validation, reference and documentation-security checks, protected CI,
+CodeQL, dependency review, package publication, and release-only Pages verification.
+Tessl was unavailable; maintainer semantic review covered all seven skill subtrees.
+
+Thanks to @FrancoStino (#1507) for the YYLO skills contribution.
+
+---
+
 ## [17.6.0] - 2026-09-19 - "Weather Skills, Idea Evaluator, Google No-Code, and Anti-Slop Design"
 
 > Adds six reviewed skills (weather model and observation retrieval, multi-agent
