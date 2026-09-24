@@ -1,10 +1,10 @@
 ---
-title: "WordCamp Kathmandu 2026 — Prompt Smarter, Not Harder: AI trainer workshop with reusable-prompt skills"
+title: "WordCamp Kathmandu 2026 — Prompt Smarter, Not Harder: a reusable-prompt workshop"
 date: "2026-09-15"
 author: "whoisabhishekadhikari"
 ---
 
-# WordCamp Kathmandu 2026 — Prompt Smarter, Not Harder: AI trainer workshop with reusable-prompt skills
+# WordCamp Kathmandu 2026 — Prompt Smarter, Not Harder: a reusable-prompt workshop
 
 ![Abhishek Adhikari, WordCamp Kathmandu 2026 speaker](https://i0.wp.com/kathmandu.wordcamp.org/2026/files/2026/07/DSC02604-scaled.jpg?fit=800%2C1200&ssl=1)
 
@@ -91,32 +91,32 @@ Photos from the workshop floor, named `wordcamp-kathmandu-2026-<name>.jpg`
 under `docs/community/showcases/media/`. Alt text and titles carry the search
 optimization; the captions read as the trainer's point of view.
 
-1. AI trainer opening the Prompt Smarter, Not Harder workshop at WordCamp
-   Kathmandu 2026 with attendees loading laptops.
-   ![AI trainer opening the Prompt Smarter, Not Harder workshop at WordCamp Kathmandu 2026](media/wordcamp-kathmandu-2026-workshop-1.jpg "AI trainer at WordCamp Kathmandu 2026: opening a prompt engineering workshop")
+1. Opening the Prompt Smarter, Not Harder workshop at WordCamp Kathmandu
+   2026 with attendees loading laptops.
+   ![AI trainer opening the Prompt Smarter, Not Harder workshop at WordCamp Kathmandu 2026](media/wordcamp-kathmandu-2026-workshop-1.jpg "AI Trainer of Nepal — Abhishek Adhikari — opening a prompt engineering workshop at WordCamp Kathmandu 2026")
 
-2. AI trainer teaching the five-part prompt — Context, Action, Format, Role,
-   Tweaks — so attendees stop writing throwaway prompts.
-   ![AI trainer teaching the five-part prompt at a skills workshop](media/wordcamp-kathmandu-2026-workshop-2.jpg "How an AI trainer teaches a reusable five-part prompt: Context, Action, Format, Role, Tweaks")
+2. Teaching the five-part prompt — Context, Action, Format, Role, Tweaks —
+   so attendees stop writing throwaway prompts.
+   ![AI trainer teaching the five-part prompt at a skills workshop](media/wordcamp-kathmandu-2026-workshop-2.jpg "AI Trainer of Nepal — Abhishek Adhikari — teaching the reusable five-part prompt: Context, Action, Format, Role, Tweaks")
 
-3. AI trainer guiding attendees as they turn a prompt into a reusable
-   `SKILL.md` — the fix for the "same prompt again and again" pain point.
-   ![AI trainer turning a prompt into a reusable skill file with attendees](media/wordcamp-kathmandu-2026-workshop-3.jpg "AI trainer cures the reusable-prompt pain point by turning prompts into SKILL.md skills")
+3. Guiding attendees as they turn a prompt into a reusable `SKILL.md` — the
+   fix for the "same prompt again and again" pain point.
+   ![AI trainer turning a prompt into a reusable skill file with attendees](media/wordcamp-kathmandu-2026-workshop-3.jpg "AI Trainer of Nepal — Abhishek Adhikari — turning prompts into reusable SKILL.md skills")
 
-4. AI trainer facilitating hands-on demos, moving room-side as each table
-   builds and runs its own prompt skill.
-   ![AI trainer facilitating hands-on demo tables at the workshop](media/wordcamp-kathmandu-2026-facilitation-1.jpg "AI trainer facilitating a hands-on prompt-to-skill workshop")
+4. Facilitating hands-on demos, moving room-side as each table builds and
+   runs its own prompt skill.
+   ![AI trainer facilitating hands-on demo tables at the workshop](media/wordcamp-kathmandu-2026-facilitation-1.jpg "AI Trainer of Nepal — Abhishek Adhikari — facilitating a hands-on prompt-to-skill workshop")
 
-5. AI trainer one-on-one, coaching an attendee through the contribution flow:
-   workflow to skill, then to a GitHub pull request.
-   ![AI trainer coaching an attendee through the GitHub skill contribution flow](media/wordcamp-kathmandu-2026-facilitation-2.jpg "AI trainer coaching a live skill contribution: workflow to SKILL.md to pull request")
+5. One-on-one coaching through the contribution flow: workflow to skill,
+   then to a GitHub pull request.
+   ![AI trainer coaching an attendee through the GitHub skill contribution flow](media/wordcamp-kathmandu-2026-facilitation-2.jpg "AI Trainer of Nepal — Abhishek Adhikari — coaching a live skill contribution: workflow to SKILL.md to pull request")
 
-6. AI trainer sharing tokens of love with the room as thanks for joining.
-   ![AI trainer giving tokens of love to workshop participants](media/wordcamp-kathmandu-2026-token-of-love.jpg "AI trainer thanking attendees with tokens of love at WordCamp Kathmandu 2026")
+6. Sharing tokens of love with the room as thanks for joining.
+   ![AI trainer giving tokens of love to workshop participants](media/wordcamp-kathmandu-2026-token-of-love.jpg "AI Trainer of Nepal — Abhishek Adhikari — thanking attendees with tokens of love at WordCamp Kathmandu 2026")
 
-7. AI trainer closing the session — the arc lands where it began: reuse
-   prompts, share skills, contribute back.
-   ![AI trainer closing the Prompt Smarter, Not Harder workshop](media/wordcamp-kathmandu-2026-closing.jpg "AI trainer closing the workshop on reusable prompts and skill contribution")
+7. Closing the session — the arc lands where it began: reuse prompts, share
+   skills, contribute back.
+   ![AI trainer closing the Prompt Smarter, Not Harder workshop](media/wordcamp-kathmandu-2026-closing.jpg "AI Trainer of Nepal — Abhishek Adhikari — closing the workshop on reusable prompts and skill contribution")
 
 ## Talk Metadata (scraped from the WordCamp site)
 
