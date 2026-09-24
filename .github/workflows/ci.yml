@@ -559,7 +559,7 @@ jobs:
 
       - name: Create or update canonical-sync PR
         id: canonical_pr
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'sickn33/agentic-awesome-skills'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         with:
           token: ${{ github.token }}
@@ -580,7 +580,7 @@ jobs:
             - [x] No source or workflow changes are included.
 
       - name: Merge canonical-sync PR after exact required checks
-        if: steps.canonical_pr.outputs.pull-request-number != ''
+        if: github.repository == 'sickn33/agentic-awesome-skills' && steps.canonical_pr.outputs.pull-request-number != ''
         env:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ steps.canonical_pr.outputs.pull-request-number }}
@@ -593,7 +593,7 @@ jobs:
             --skip-pages
 
       - name: Check for uncommitted drift
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'sickn33/agentic-awesome-skills'
         run: |
           if ! git diff --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
             echo "❌ Detected leftover drift after preparing the canonical-sync PR."
