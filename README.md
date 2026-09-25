@@ -42,6 +42,14 @@ This is an independent community project. It is not affiliated with, sponsored b
 [![OpenCode](https://img.shields.io/badge/OpenCode-CLI-gray?style=for-the-badge)](https://github.com/opencode-ai/opencode)
 [![Antigravity](https://img.shields.io/badge/Antigravity-AI%20IDE-red?style=for-the-badge)](https://github.com/sickn33/agentic-awesome-skills)
 
+## Watch the Introduction
+
+A 40-second introduction to Agentic Awesome Skills. Press play to watch it here on GitHub.
+
+https://github.com/user-attachments/assets/02aa20ca-c3bb-4984-807e-7b06ef77e785
+
+If GitHub's player stalls, [watch the video on the AAS website](https://aaskills.tech/).
+
 ## Support the Project
 
 **We’re looking for sponsors to support Agentic Awesome Skills.** If you or your company would like to support the project, become a sponsor.
@@ -107,6 +115,7 @@ Direct file search can find candidate prose, but it leaves the result in the con
 
 ## Table of Contents
 
+- [Watch the Introduction](#watch-the-introduction)
 - [Support the Project](#support-the-project)
 - [AAS Core: Agent-First Preview](#aas-core-agent-first-preview)
 - [Why This Repo](#why-this-repo)
@@ -525,6 +534,7 @@ Key source families include:
 
 ### Community Contributors
 
+- **[tomelias10/mcp-drift-check](https://github.com/tomelias10/mcp-drift-check)**: MIT source for the `mcp-dependency-drift-audit` skill — zero-execution review of mutable npm/npx package references in MCP configuration, with a manual static fallback and CI/SARIF guidance.
 - **[wwewtech/chatexport-need-miner](https://github.com/wwewtech/chatexport-need-miner)**: Source for the `chatexport-need-miner` skill — community guidance and examples under MIT.
 - **[socai-io/jev-social](https://github.com/socai-io/jev-social)**: Source for the `jev-social` skill — read-only Jev/socai social research routing (MIT).
 - **[work0r-ai/agent-kit](https://github.com/work0r-ai/agent-kit)**: Source for the `workorai` skill — agent kit workflows (MIT).
