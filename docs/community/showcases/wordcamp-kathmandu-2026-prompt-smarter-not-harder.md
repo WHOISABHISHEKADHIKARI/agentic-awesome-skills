@@ -70,6 +70,21 @@ sharing — and the deck directly applies the structured prompting that this
 community's `prompt-engineering` and `prompt-engineering-patterns` skills
 formalize, inviting attendees to run those patterns on their own assistant.
 
+## Contributor & Advocate — Why This Matters
+
+Beyond the workshop itself, sharing this on the WordCamp Kathmandu stage
+matters because Nepal is adopting AI at its peak moment right now, and the gap
+between everyday AI use and good AI use has never been wider. As an AI trainer
+of Nepal, my stake is practical: most people stop at a throwaway prompt when an
+optimal solution is minutes away — a structured prompt, a reusable skill, a
+contribution back to the community that taught them. Contributing the
+`google-no-code` skill and opening this PR is the same act at a different
+scale: showing that the learning loop ends not in memorizing prompts but in
+publishing something others can reuse. That is why I keep showing up on the
+stage and in the repository — to shrink the gap between where AI is used and
+where it could be, one skill at a time, while Nepal's AI journey is at its
+peak.
+
 ## Provenance
 
 This content was authored by me and is verified at these links:
