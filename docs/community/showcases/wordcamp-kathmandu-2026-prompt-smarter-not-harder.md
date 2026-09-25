@@ -70,6 +70,10 @@ sharing — and the deck directly applies the structured prompting that this
 community's `prompt-engineering` and `prompt-engineering-patterns` skills
 formalize, inviting attendees to run those patterns on their own assistant.
 
+<a href="https://www.star-history.com/sickn33/agentic-awesome-skills">
+  <img src="https://api.star-history.com/badge?repo=sickn33/agentic-awesome-skills&type=rank" alt="Star History for the Agentic Awesome Skills community" />
+</a>
+
 ## Contributor & Advocate — Why This Matters
 
 Beyond the workshop itself, sharing this on the WordCamp Kathmandu stage
@@ -115,6 +119,7 @@ All links verified resolving.
 - Speaker profiles:
   - GitHub: https://github.com/WHOISABHISHEKADHIKARI
   - LinkedIn: https://www.linkedin.com/in/whoisabhishek/
+  - Luma: https://luma.com/user/whoisabhishek
   - WordPress: https://profiles.wordpress.org/abhu1254/
   - Site: https://abhishekadhikari.com
   - Web: https://krishihimalaya.com/
