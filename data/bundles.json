@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T11:19:09.000Z",
+  "generatedAt": "2026-09-25T04:54:31.000Z",
   "bundles": {
     "core-dev": {
       "description": "Core development skills across languages, frameworks, and backend/frontend fundamentals.",
@@ -816,6 +816,7 @@
         "moodle-external-api-development",
         "mtls-configuration",
         "network-101",
+        "nexrad-mosaic-access",
         "observability-monitoring-slo-implement",
         "platform-engineering",
         "production-runtime-certification",
@@ -985,6 +986,7 @@
         "neon-postgres-branches",
         "neon-postgres-egress-optimizer",
         "nestjs-expert",
+        "nexrad-product-access",
         "nextjs-best-practices",
         "obsidian-bases",
         "odoo-automated-tests",
@@ -1521,6 +1523,7 @@
         "test-automator",
         "test-fixing",
         "test-framework-migration-skill",
+        "testdriver-e2e-testing",
         "testing-patterns",
         "testing-qa",
         "tiktok-automation",
