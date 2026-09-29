@@ -1,6 +1,6 @@
 ---
 name: admin-access-register
-description: 'Admin Access Register: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for admin access register.'
+description: 'Admin account register: system, main and backup admin, seats, plan, 2FA, shared logins and access-review dates, as CSV, SQL, JSON Schema or Notion on request. Use for access reviews.'
 category: business
 risk: safe
 source: self

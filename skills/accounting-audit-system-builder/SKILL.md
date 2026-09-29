@@ -1,6 +1,6 @@
 ---
 name: accounting-audit-system-builder
-description: Routes an accounting or audit request to the right module skill, from software selection through monthly closing. Asks only what is missing. Use for books of accounts or audit files.
+description: 'Routes an accounting or audit request to the right module skill, from software selection through monthly closing, asking only what is missing. Use for books of accounts or audit files.'
 category: business
 risk: safe
 source: self

@@ -1,6 +1,6 @@
 ---
 name: 360-feedback-system
-description: '360 feedback system: context-first intake, then CSV, SQL, JSON Schema and Notion on request, derived from one field list. Use for 360 feedback, peer review or a feedback cycle.'
+description: '360 feedback register: reviewer, subject, review cycle, visibility, due date and score, as CSV, SQL, JSON Schema or Notion on request. Use for 360 reviews or peer feedback cycles.'
 category: business
 risk: safe
 source: self

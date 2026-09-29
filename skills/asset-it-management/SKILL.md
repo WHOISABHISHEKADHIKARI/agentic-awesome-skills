@@ -1,6 +1,6 @@
 ---
 name: asset-it-management
-description: 'Asset & IT Management: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for asset tracker.'
+description: 'Asset and IT register: serial, model, condition, assignee, location, purchase value, warranty expiry and return date, as CSV, SQL, JSON Schema or Notion on request. Use for asset audits.'
 category: business
 risk: safe
 source: self

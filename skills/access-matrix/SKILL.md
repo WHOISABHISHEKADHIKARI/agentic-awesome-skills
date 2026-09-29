@@ -1,6 +1,6 @@
 ---
 name: access-matrix
-description: 'Access Matrix: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for who can access what matrix.'
+description: 'Access matrix of role-by-module permissions, with per-role scope, confidentiality level and SME tier, as CSV, SQL, JSON Schema or Notion on request. Use for access reviews.'
 category: business
 risk: safe
 source: self

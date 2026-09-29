@@ -1,6 +1,6 @@
 ---
 name: announcement-board
-description: 'Announcement Board: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for announcement board.'
+description: 'Announcement board: author, category, department, priority, audience, publish and expiry dates, status and acknowledgements, as CSV, SQL, JSON Schema or Notion on request. Use for internal notices.'
 category: business
 risk: safe
 source: self

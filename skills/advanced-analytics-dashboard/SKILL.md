@@ -1,6 +1,6 @@
 ---
 name: advanced-analytics-dashboard
-description: 'Advanced Analytics Dashboard: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for analytics dashboard.'
+description: 'Dashboard metric register: metric, source module, formula, period, value, target, trend, owner and last-updated, as CSV, SQL, JSON Schema or Notion on request. Use for KPI dashboards.'
 category: business
 risk: safe
 source: self

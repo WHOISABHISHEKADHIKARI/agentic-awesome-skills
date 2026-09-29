@@ -1,6 +1,6 @@
 ---
 name: accounting-software-selection
-description: 'Accounting Software Selection: a 57-field evidence-backed comparison of shortlisted packages. Use for software selection.'
+description: 'Scores shortlisted accounting packages against 57 evidence-backed fields, emitted as CSV, SQL, JSON Schema or Notion on request. Use for choosing accounting software.'
 category: business
 risk: safe
 source: self

@@ -1,6 +1,6 @@
 ---
 name: alumni-re-hire-tracker
-description: 'Alumni & Re-hire Tracker: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for alumni tracker.'
+description: 'Alumni and re-hire register: former role, last working day, re-hire eligibility, current employer and re-engagement date, as CSV, SQL, JSON Schema or Notion on request. Use for alumni outreach.'
 category: business
 risk: safe
 source: self

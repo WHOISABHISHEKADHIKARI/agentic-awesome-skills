@@ -1,6 +1,6 @@
 ---
 name: attendance
-description: 'Attendance: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for attendance tracker.'
+description: 'Daily attendance register: check-in and check-out, hours worked, work mode, late minutes, leave and regularisation flags, as CSV, SQL, JSON Schema or Notion on request. Use for payroll input.'
 category: business
 risk: safe
 source: self
