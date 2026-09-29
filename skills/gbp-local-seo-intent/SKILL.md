@@ -433,47 +433,8 @@ video of the shopfront.
 >
 > Want the CSV, SQL DDL, JSON Schema and Notion mapping for this?
 
-## Best Practices
 
-- Build when requested; recommend and offer a build for advice-only requests.
-- One question per message. A batched intake reads as a form and gets guessed at.
-- Complete the profile before optimising it. An unverified profile is invisible, so nothing
-  else matters until verification finishes.
-- Pick the most specific true primary category. A generic category is a fight against
-  businesses with a more specific one, and a category that is not accurate is a suspension
-  risk.
-- Only add secondary categories that are genuinely true. A category is a statement about
-  the business, not a keyword slot.
-- Write the description in plain words, name the services and the service area inside it,
-  and do not put a URL or a promotional phrase in it. Google strips both.
-- Never add a keyword to the business name. It is a policy violation and the fastest route
-  to suspension. If a keyword is needed in the name, the route is a permitted registered or
-  trading name, obtained properly - not a string typed into a free field.
-- For a service-area business with no walk-in premises, hide the address and set the
-  service area. Do not use a virtual address, a co-working space or a friend's home -
-  suspension and a manual action are the likely outcomes.
-- One post a week with a real photo and one call to action. A post with no image is a
-  text-only post, and it underperforms.
-- Give every offer post an expiry date. An offer left up for ever looks abandoned.
-- One new review a week, forever. Google weighs review count, recency and rating together,
-  so steady new reviews beat a burst of thirty in one week.
-- Reply to every review, including the good ones. A substantial share of customers read the
-  responses before deciding, which makes the reply a conversion factor rather than damage
-  control. Reply to a bad review by acknowledging the specific complaint, saying what will
-  change, and moving it off-platform - never by arguing, and never by revealing anything
-  about the reviewer.
-- Ask for reviews at the moment of satisfaction, with a short link generated from the
-  profile, not a QR code to the homepage.
-- Photograph the real premises, the real team and the real work. Stock is the clearest
-  possible signal that nobody has been there.
-- Keep the hours correct, including special hours for holidays. Wrong hours generate both
-  one-star reviews and lost customers.
-- Use the same words on the website, the profile and the directories. Write the intent map
-  down once and share it; the profile, the page and the citation all read from it.
-- Never buy reviews, and never buy a better rank. Neither is possible, both are policy
-  violations, and both are detected.
-- Derive all four artifacts from the field list in this file, never by hand.
-- If the user requests an example row, keep it obviously fake so nobody imports it as a real profile.
+See the [Best Practices](references/best-practices.md) reference for the full guidance.
 
 ## Limitations
 
@@ -500,92 +461,6 @@ video of the shopfront.
 - "Competitors show up for everything" usually means a more complete profile, more reviews
   and closer proximity - not that they did something the business cannot do.
 
-## Security & Safety Notes
 
-- Never invent an address, a phone number, a category, a service, a review count, a rating,
-  a keyword or a metric. `Unknown` and blank are correct when nothing has been measured; zero means a measured zero.
-- Never paste a real customer list, a review export containing customer names, or a
-  verified-address document into this table. A review with a name and photo is personal
-  data, and the address of the premises is sensitive in some jurisdictions.
-- The profile login must not be a personal account that one person controls and nobody
-  else can reach. A shared account with named managers and named access is the
-  recommendation; losing the owner account is how businesses lose their profile.
-- Two-factor authentication on the profile account, and a record of who has manager access.
-- Never fabricate or incentivise a review. A review gate - asking only happy customers -
-  breaches Google's policy and is detectable.
-- Never advise a virtual address, a coworking membership or a friend's premises to appear
-  in the map pack. It is a guideline violation and the suspension is usually permanent for
-  that profile.
-- Reply content to a negative review is a public statement. It must never include a
-  customer's personal details, a transaction reference or a service detail that identifies
-  them. Move it to a private channel.
-- Verification documents - a video of the shopfront, a utility bill, a lease - are
-  sensitive. They should go to Google directly and never into this table or a chat.
-- Local reads, generation commands, and validation are part of a requested artifact build.
-  External writes, messages, provisioning, and publication require authorization for that
-  action and target; existing explicit authorization does not need to be repeated.
+See the [Security & Safety Notes](references/security-safety-notes.md) reference for the full guidance.
 
-## Common Pitfalls
-
-- **Problem:** a static mapping is described as a completed workspace build.
-  **Solution:** deliver manual mappings without a connection; claim a live change only
-  after the authorized tool operation succeeds.
-- **Problem:** asked all five questions in one message.
-  **Solution:** ask one, wait, and drop any the first answer already covered.
-- **Problem:** the profile is unverified and everything else is being optimised.
-  **Solution:** finish verification first. Nothing ranks on an unverified profile, so the
-  rest is wasted effort.
-- **Problem:** the business name is now "Example Retail - Best Cookware Shop in Example
-  City".
-  **Solution:** that is a policy violation. Revert to the real name and put the keyword in
-  the description and the services.
-- **Problem:** a virtual office address was used for a service-area business.
-  **Solution:** hide the address, set the service area properly, and expect either a
-  suspension or a wasted profile.
-- **Problem:** one post was published eighteen months ago.
-  **Solution:** dormant profiles lose visibility. A weekly post with a real photo is the
-  cheapest ongoing work on this list.
-- **Problem:** fifty reviews arrived in one week from the same device.
-  **Solution:** that pattern is a policy violation risk, and the volume is worth less than
-  the appearance. Steady, one a week, is what the signal actually rewards.
-- **Problem:** the profile, the website and three directories all describe the service
-  differently.
-  **Solution:** write the intent map once and use it everywhere. Inconsistency dilutes all
-  of them.
-- **Problem:** a category was added because a competitor had it.
-  **Solution:** categories are a statement of fact. An inaccurate category is a suspension
-  risk and gains nothing.
-- **Problem:** the review replies all say "Thank you for your feedback."
-  **Solution:** a reply that could apply to any business is not a reply. Say something
-  specific to what the customer actually said.
-- **Problem:** all four artifacts drift apart.
-  **Solution:** derive all four from the field list in this file, never by hand.
-- **Problem:** Notion import shows every column as Text.
-  **Solution:** that is expected. Apply the property mapping table once, after import.
-
-## Related Skills
-
-- @brand-growth-system-builder - routes to this skill and the other 12 brand and growth modules.
-- @business-website-setup - the pages every post and service points at, sharing the same
-  keywords and the same NAP.
-- @seo-directory-backlinks - the citations that must agree with this profile exactly.
-- @logo-image-design - the logo, the shopfront photography and the product images that go
-  on the profile.
-- @business-email-template - the review request, and any offer announcement.
-- @linktree-link-hub - where the booking and call actions land.
-- @social-media-setup - cross-posting the weekly post, with the platform's own constraints.
-- @code-of-conduct - how reviews and complaints are handled when they are about staff.
-- [Free Design Resources](../free-design-resources/SKILL.md) - Search Console, PageSpeed Insights, the schema validators and
-  the free stock sources for photos.
-
-## Reusable Prompt
-
-```
-I want my Google Business Profile set up properly and ranked - categories, services,
-description, posts, photos and a review process, plus the search-intent map behind it.
-Ask me one short question at a time, and only about what I have not already told you.
-Never invent an address, a category, a review count, a rating or a keyword. Confirm
-verification first, and never suggest anything that violates Google's business name or
-address policy. Wait for me to ask before you build anything.
-When I ask, output CSV, SQL DDL, JSON Schema and a Notion property mapping. Data only.
-```

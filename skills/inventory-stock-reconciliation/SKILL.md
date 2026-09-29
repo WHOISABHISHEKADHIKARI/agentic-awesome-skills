@@ -394,57 +394,8 @@ are ISO `YYYY-MM-DD` in real date fields. Round once, at the end, and say so.
 fails: a variance with no investigated reason, an adjustment with no named approver, or a
 missing unit all hold it at `In progress` or `Blocked`.
 
-## Select Options
 
-**Category**
-
-```
-Raw Material | Work In Progress | Finished Goods | Consumable | Packaging | Spare | Other
-```
-
-**UOM**
-
-```
-Nos | Kg | Litre | Metre | Set | Hour | Box | Packet
-```
-
-**Variance Reason**
-
-```
-Shortage | Excess | Damage | Expiry | Slow Moving | Unrecorded Purchase | Unrecorded Issue | Data Entry Error | Under Investigation
-```
-
-**Slow Moving Flag**
-
-```
-Yes | No
-```
-
-**Count Frequency**
-
-```
-Monthly | Quarterly | Half-Yearly | Annual
-```
-
-**Status**
-
-```
-Not started | In progress | Blocked | Done | Cancelled
-```
-
-Every list above is a starting set, not a confirmed business taxonomy. If the user supplies
-their own values, the user's values win, and the Notion column says add options after import
-for exactly that reason. `Variance Reason` in particular is not a menu to pick from: a reason
-nobody investigated is `Under Investigation`, never the first plausible option.
-
-## Relations
-
-Link fields: none
-
-This table declares no relation fields, so nothing here points at a database that does not
-exist. Where the business wants the count sheet or the stock movement attached, add the link
-field deliberately, as `VARCHAR(255)` with a comment in SQL, and as `Relation` in Notion only
-once the target database is actually imported.
+See the [Select Options](references/select-options.md) reference for the full guidance.
 
 ## Examples
 
@@ -493,24 +444,8 @@ is still `Unknown`, because nobody supplied it.
 >
 > Want me to build the CSV, SQL DDL, JSON Schema and Notion mapping?
 
-## Best Practices
 
-- Build when requested; recommend and offer a build for advice-only requests.
-- One question per message. A batched intake reads as a form and gets guessed at.
-- Ask `Counted By` and `Verified By` as two questions. One answer to both is one answer.
-- Keep every field name identical, and in the same order, across all four artifacts.
-- Ship an empty template. A fabricated row in a delivered CSV is indistinguishable from a
-  real count once it is in a spreadsheet.
-- Keep counting, verification and adjustment approval as three separate roles unless the user
-  explicitly says two of them are the same person.
-- Never book an adjustment without a named approver. If nobody can approve, that is the
-  finding, not a detail to leave blank.
-- Record the reason for a variance in words as well as in the select. The reason is a
-  judgement someone made, and the next reader needs to know who.
-- Count on a stated frequency and write it into the record. A reconciliation with no count
-  frequency attached is not evidence that the count is regular.
-- Never let a difference be corrected in the numbers to make a tie-out work. Record it and
-  mark it.
+See the [Best Practices](references/best-practices.md) reference for the full guidance.
 
 ## Limitations
 
@@ -530,100 +465,6 @@ is still `Unknown`, because nobody supplied it.
 - Human review remains required for investigations, adjustments, legal, tax and disciplinary
   matters before this drives any real decision.
 
-## Security & Safety Notes
 
-- Never fill in real names, stock quantities, locations or banking data. Placeholders only:
-  `REC-EXAMPLE-001`, `ITEM-EXAMPLE-001`, `ADJ-EXAMPLE-001`.
-- Do not process or reproduce real employee personal data, salaries, medical data, banking
-  information, passwords or unnecessary personal identifiers. If real employee data is
-  pasted, use only the minimum needed for the requested template and tell the user to remove
-  the rest from the conversation.
-- Stock records expose inventory quantities, locations, staffing and operational controls.
-  Keep the file access-limited and do not circulate it outside the people who need it.
-- Label example rows as synthetic, and keep bank details masked.
-- Local reads, generation commands, and validation are part of a requested artifact build.
-  External writes, messages, provisioning, and publication require authorization for that
-  action and target; existing explicit authorization does not need to be repeated.
+See the [Security & Safety Notes](references/security-safety-notes.md) reference for the full guidance.
 
-## Common Pitfalls
-
-- **Problem:** a static mapping is described as a completed workspace build.
-  **Solution:** deliver manual mappings without a connection; claim a live change only
-  after the authorized tool operation succeeds.
-- **Problem:** asked all six questions in one message.
-  **Solution:** ask one, wait, and drop any the first answer already covered.
-- **Problem:** the user said `yes` to "a full count or a cycle count?" and it was recorded
-  as a full count.
-  **Solution:** that question had no yes/no answer to give, so `yes` is not a choice. Re-ask
-  it as an explicit either/or and wait.
-- **Problem:** `20 to 50` to "how many items, and when did you last count?" filled in a count
-  date as well.
-  **Solution:** keep only the answered half. The date stays `Unknown`.
-- **Problem:** `Manager` was copied into `Verified By` because the manager also approves
-  adjustments.
-  **Solution:** three roles, three questions, three answers. Approval says nothing about
-  verification.
-- **Problem:** an illustrative count was shipped in the CSV and got counted as a real count.
-  **Solution:** the template is a header row. Add a data row only when the user asks for one,
-  and label it.
-- **Problem:** quantities, locations and variance reasons were filled with plausible values
-  to make the template look finished.
-  **Solution:** blank is a correct answer. Unknown is not zero.
-- **Problem:** adjustments posted with no approver and no reason.
-  **Solution:** leave the status at `In progress` until the reason and the approver are
-  recorded. A variance without an investigated cause is a question, not an adjustment.
-- **Problem:** a variance was marked `Done` because the adjustment had been booked.
-  **Solution:** a booked adjustment is not an investigated one. The reason and the approver
-  are the gate.
-- **Problem:** a shortage was quietly written down to make the books agree.
-  **Solution:** record the difference and mark it for review. A forced tie-out is a hidden
-  adjustment.
-- **Problem:** built a full system when one table was asked for.
-  **Solution:** build what was requested; mention the parent skill separately.
-- **Problem:** all four artifacts drift apart.
-  **Solution:** derive all four from the Field Reference table, never by hand.
-- **Problem:** Notion import shows every column as Text.
-  **Solution:** that is expected. Apply the property mapping table once, after import.
-
-## Related Skills
-
-- @accounting-audit-system-builder - routes to this skill and the other accounting modules.
-- @purchase-accounting - where unrecorded purchases are found and booked.
-- @sales-accounting - where unrecorded issues usually turn out to have come from.
-- @day-book - the stock entries this count is compared against.
-- [Expense Accounting](../expense-accounting/SKILL.md) - absorbs the cost of damaged and expired stock.
-- @party-ledger-reconciliation - the same compare-and-investigate logic applied to balances.
-- @monthly-closing-statements - the closing that depends on this reconciliation.
-- @audit-preparation - where the filed count sheets are audited.
-
-## Reusable Prompt
-
-```
-I want to set up physical counts against book quantities, differences investigated and
-authorised adjustments, for my company.
-
-Ask me one short question at a time, and only about information I have not already
-provided. Treat an ambiguous answer such as "yes" to a multiple-choice question as
-unresolved and ask me to choose. If I answer only part of a question, record that part and
-leave the rest unknown. If I do not know something, record it as unknown rather than
-guessing, and never record unknown as zero.
-
-Never infer or invent names, dates, quantities, values, locations, approvals, variance
-reasons, roles or any other business fact.
-
-Keep counting, verification and adjustment approval as three separate roles. Ask who counts,
-who verifies and who approves an adjustment as three separate questions, and never fill one
-from another.
-
-Then recommend the smallest setup that fits my confirmed context and wait for me to ask
-before you build.
-
-When I ask you to build it, output only the artifacts I requested - CSV, SQL DDL, JSON
-Schema and/or a Notion property mapping - as empty templates, using one identical canonical
-field list, with identical field names and order, across all of them.
-
-Do not include invented or illustrative transaction rows unless I explicitly request an
-example row, and label any example row clearly as illustrative. A variance with no
-investigated reason stays unresolved, and no record is marked done while a required check
-is outstanding.
-```

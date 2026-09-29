@@ -319,7 +319,7 @@ We want a wellness benefit but do not know whether anyone uses it.
 
 ## Related Skills
 
-- [Module Catalog](../../CATALOG.md) - find the relevant module, then read its skill.
+- ](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.
 - @people-directory - the employee master record most modules link to.
 - @notification-reminder-hub - turns due dates in this module into reminders.
 
