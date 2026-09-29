@@ -426,7 +426,7 @@ Petty cash keeps running out before the month ends and we never know by how much
 
 - @accounting-audit-system-builder - routes to this skill and the other 15 modules.
 - @day-book - the daily cash book the float is counted into.
-- [Payment Accounting](../payment-accounting/SKILL.md) - the replenishment, when it is made from bank.
+- ](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/payment-accounting/SKILL.md) - the replenishment, when it is made from bank.
 - @expense-accounting - where the expenses paid from the float are classified.
 - @source-document-filing - where the supporting documents behind each entry are held.
 - @salary-wage-accounting - wage sheets are one of the acceptable petty cash documents.

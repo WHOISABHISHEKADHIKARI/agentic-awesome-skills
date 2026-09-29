@@ -486,31 +486,6 @@ template that has been used for other loans. We have no idea what to put in it.
 - **Problem:** Notion import shows every column as Text.
   **Solution:** that is expected. Apply the property mapping table once, after import.
 
-## Related Skills
 
-- @brand-growth-system-builder - routes to this skill and the other 12 brand and growth modules.
-- @design-theme-guide - the type scale and colour roles every slide is built from.
-- @logo-image-design - the mark, the clear-space rule and the misuse rules that apply to
-  slides like every other surface.
-- @gbp-local-seo-intent - reviews, ratings and photographs, the most reusable evidence a
-  local business has.
-- @business-website-setup - the offer, the pricing and the proof the deck links to.
-- `presentation-deck` consumers: `social-media-setup` - most good business content is a
-  slide repurposed into a post.
-- @seo-directory-backlinks - the guest contribution and the local press angle both begin
-  as a deck and an article.
-- @code-of-conduct - the conduct and privacy rules that decide what may be shown.
-- @free-design-resources - Google Slides, Canva, Marp, Slidev, reveal.js and the free
-  template and image sources.
+See the [Related Skills](references/related-skills.md) reference for the full guidance.
 
-## Reusable Prompt
-
-```
-I need the content for a business presentation - who is it for, what I want them to
-decide, and what each slide says.
-Ask me one short question at a time, and only about what I have not already told you.
-Never invent a figure, a customer name or a projection. Every number must have a source
-or come out. Then recommend the smallest slide set that fits the time slot, and wait for
-me to ask before you build it.
-When I ask, output CSV, SQL DDL, JSON Schema and a Notion property mapping. Data only.
-```
