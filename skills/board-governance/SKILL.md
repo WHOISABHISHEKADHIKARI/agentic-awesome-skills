@@ -336,6 +336,13 @@ Keep agenda items, resolutions, votes, conflicts, and follow-up actions as separ
 
 When preparing a board pack, label draft, circulated, approved, and superseded versions. Link every action to the resolution that created it, assign one accountable owner, and leave due dates empty when the board did not set them. Do not expose confidential papers to a wider audience merely because they appear in the same meeting folder.
 
+
+## Board Pack Controls
+
+Use a pack index with document title, owner, version, confidentiality, circulation date, and approval state. Distinguish an information paper, a decision paper, a resolution draft, and a post-meeting action log. For each decision paper, capture the decision requested, options considered, material assumptions, conflicts declared, and the exact resolution adopted.
+
+Minutes should record who chaired, who attended, quorum, apologies, declarations, motions, vote counts, recusals, and close time. If a correction is made after circulation, issue a new version and retain the prior version as superseded evidence. Never overwrite an approved minute with a draft.
+
 ## Related Skills
 
 - [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.

@@ -305,6 +305,13 @@ Treat a buddy match as a supported assignment, not as a performance judgement. C
 
 Track each check-in as an event with date, channel, attendance, topics raised, agreed next step, and escalation owner. A missed check-in is not evidence of disengagement; record the attempt and ask the participant what support is needed. Close a match only after both participants have a documented end date or an approved reassignment.
 
+
+## Check-in Conversation Guide
+
+A first check-in confirms role context, onboarding goals, boundaries, preferred channels, accessibility needs, and what must remain private. A later check-in records what was tried, what blocked progress, what support the participant requested, and the next mutually agreed action. Avoid collecting sensitive personal stories when a simple support status is enough.
+
+Use a neutral status vocabulary: `planned`, `scheduled`, `held`, `rescheduled`, `missed`, `escalated`, and `closed`. A manager escalation requires the participant's permission unless an explicit safety or policy exception applies; record the exception and the minimum necessary detail.
+
 ## Related Skills
 
 - [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.

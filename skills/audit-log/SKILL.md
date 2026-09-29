@@ -290,6 +290,13 @@ Before treating a change record as evidence, verify the event identity, actor, t
 
 For a review export, filter by the requested time window first, then check that the export is complete, ordered deterministically, and scoped to the authorized system. Redact secrets and personal data only after retaining a reversible reference to the source record; never rewrite the underlying audit event. Record retention, deletion, clock drift, failed writes, duplicate events, and any gap in sequence as review findings rather than silently filling them.
 
+
+## Event Taxonomy
+
+Use a fixed action vocabulary such as `create`, `read`, `update`, `delete`, `export`, `approve`, `reject`, `login`, `permission-change`, and `retention-delete`. Store the resource type and resource identifier separately from the human-readable label. For bulk jobs, record the job identifier, item count, start and finish, partial-failure count, and final status; one bulk event must not be mistaken for one successful change per item.
+
+For investigations, preserve the sequence as observed, then derive a second view grouped by actor, resource, or correlation ID. Mark derived views as derived and keep the query definition with the export. A missing event is a finding only when the expected event boundary and source system are known.
+
 ## Related Skills
 
 - [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.

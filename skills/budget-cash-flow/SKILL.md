@@ -328,6 +328,13 @@ Keep budget, committed spend, actual spend, forecast, and cash movement as disti
 
 For each material variance, capture the owner, evidence, expected timing, confidence, and next review date. Separate timing differences from permanent changes, and keep one-off items visible rather than smoothing them into a recurring run rate. Cash availability is not the same as profit: identify opening balance, inflows, outflows, restricted funds, and minimum reserve before presenting a runway figure.
 
+
+## Forecast Reconciliation
+
+At each close, reconcile opening cash plus inflows minus outflows to the closing bank or treasury balance, then explain approved timing differences separately. Keep accrual budget, invoice commitments, paid cash, and forecast revisions as different columns. Do not use a favorable cash variance to hide an unpaid commitment or a delayed invoice.
+
+For scenario planning, name the scenario, effective date, assumptions, sensitivity drivers, and approval owner. A runway estimate must state the balance source, burn definition, horizon, and excluded restricted cash. When a forecast changes, preserve the prior version and record the reason for the change.
+
 ## Related Skills
 
 - [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.
