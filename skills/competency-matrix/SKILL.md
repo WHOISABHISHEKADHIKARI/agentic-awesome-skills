@@ -321,7 +321,7 @@ We want a consistent way to describe what good looks like per role.
 
 ## Related Skills
 
-- [Module Catalog](../../CATALOG.md) - find the relevant module, then read its skill.
+- [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.
 - @skill-gap-analysis - actual vs expected for a named person; this skill stores expected
   levels per role, not a person's gap.
 
