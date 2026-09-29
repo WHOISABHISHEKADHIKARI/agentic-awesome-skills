@@ -2,7 +2,7 @@
 
 Generated at: 2026-09-29T09:21:51.000Z
 
-Total skills: 2478
+Total skills: 2488
 
 ## agent-behavior (5)
 
@@ -530,10 +530,20 @@ Total skills: 2478
 | `reverse-browser-automation` | Automate browsers (Playwright) and Windows desktop applications (UI automation) for reverse-engineering evidence collection, UI-driven workflows, and network... | safe | zhaoxuya520/reverse-skill | reverse, browser | reverse, browser, automation, automate, browsers, playwright, windows, desktop, applications, ui, engineering, evidence |
 | `skyvern-browser-automation` | AI-powered browser automation — navigate sites, fill forms, extract structured data, log in with stored credentials, and build reusable workflows. | safe | Skyvern-AI/skyvern | browser-automation, mcp, web-scraping, form-filling, ai-agents, workflow-automation | browser-automation, mcp, web-scraping, form-filling, ai-agents, workflow-automation, skyvern, browser, automation, ai, powered, navigate |
 
-## business (72)
+## business (82)
 
 | Skill | Description | Risk | Source | Tags | Triggers |
 | --- | --- | --- | --- | --- | --- |
+| `360-feedback-system` | 360 feedback system: context-first intake, then CSV, SQL, JSON Schema and Notion on request, derived from one field list. Use for 360 feedback, peer review o... | safe | WHOISABHISHEKADHIKARI/sme-ops-system-builder | sme, business, operations, database, csv, notion, sql, manage | sme, business, operations, database, csv, notion, sql, manage, 360, feedback, context, first |
+| `access-matrix` | Access Matrix: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for who can access what matrix. | safe | WHOISABHISHEKADHIKARI/sme-ops-system-builder | sme, business, operations, database, csv, notion, sql, foundation | sme, business, operations, database, csv, notion, sql, foundation, access, matrix, context, first |
+| `accounting-audit-system-builder` | Routes an accounting or audit request to the right module skill, from software selection through monthly closing. Asks only what is missing. Use for books of... | safe | WHOISABHISHEKADHIKARI/sme-ops-system-builder | sme, accounting, audit, bookkeeping, finance, database, csv, sql, router | sme, accounting, audit, bookkeeping, finance, database, csv, sql, router, builder, routes, request |
+| `accounting-software-selection` | Accounting Software Selection: a 57-field evidence-backed comparison of shortlisted packages. Use for software selection. | safe | WHOISABHISHEKADHIKARI/sme-ops-system-builder | sme, accounting, audit, finance, database, csv, notion, sql, evaluation | sme, accounting, audit, finance, database, csv, notion, sql, evaluation, software, selection, 57 |
+| `admin-access-register` | Admin Access Register: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for admin access register. | safe | WHOISABHISHEKADHIKARI/sme-ops-system-builder | sme, business, operations, database, csv, notion, sql, protect | sme, business, operations, database, csv, notion, sql, protect, admin, access, register, context |
+| `advanced-analytics-dashboard` | Advanced Analytics Dashboard: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for analytics dashboard. | safe | WHOISABHISHEKADHIKARI/sme-ops-system-builder | sme, business, operations, database, csv, notion, sql, analyze | sme, business, operations, database, csv, notion, sql, analyze, analytics, dashboard, context, first |
+| `alumni-re-hire-tracker` | Alumni & Re-hire Tracker: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for alumni tracker. | safe | WHOISABHISHEKADHIKARI/sme-ops-system-builder | sme, business, operations, database, csv, notion, sql, exit | sme, business, operations, database, csv, notion, sql, exit, alumni, re, hire, tracker |
+| `announcement-board` | Announcement Board: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for announcement board. | safe | WHOISABHISHEKADHIKARI/sme-ops-system-builder | sme, business, operations, database, csv, notion, sql, engage | sme, business, operations, database, csv, notion, sql, engage, announcement, board, context, first |
+| `asset-it-management` | Asset & IT Management: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for asset tracker. | safe | WHOISABHISHEKADHIKARI/sme-ops-system-builder | sme, business, operations, database, csv, notion, sql, onboard | sme, business, operations, database, csv, notion, sql, onboard, asset, context, first, intake |
+| `attendance` | Attendance: context-first intake, then CSV, SQL, JSON Schema and Notion on request. Use for attendance tracker. | safe | WHOISABHISHEKADHIKARI/sme-ops-system-builder | sme, business, operations, database, csv, notion, sql, manage | sme, business, operations, database, csv, notion, sql, manage, attendance, context, first, intake |
 | `backtesting-frameworks` | Build robust, production-grade backtesting systems that avoid common pitfalls and produce reliable strategy performance estimates. | safe | community | backtesting, frameworks | backtesting, frameworks, robust, grade, avoid, common, pitfalls, produce, reliable, performance, estimates |
 | `bamboohr-automation` | Automate BambooHR tasks via Rube MCP (Composio): employees, time-off, benefits, dependents, employee updates. Always search tools first for current schemas. | critical | community | bamboohr | bamboohr, automation, automate, tasks, via, rube, mcp, composio, employees, time, off, benefits |
 | `business-analyst` | Master modern business analysis with AI-powered analytics, real-time dashboards, and data-driven insights. Build comprehensive KPI frameworks, predictive mod... | safe | community | business, analyst | business, analyst, analysis, ai, powered, analytics, real, time, dashboards, data, driven, insights |

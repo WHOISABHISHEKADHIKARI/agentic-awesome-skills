@@ -116,7 +116,7 @@ invent an answer - if the user does not know, record it as unknown and carry on.
 
 Match on what the user named, not on what the tier allows. Present two or three modules,
 one line of reason each, and ask which to start. A list of 100 is not a recommendation.
-Full index: `catalog.md`.
+Full index: [`references/catalog.md`](references/catalog.md).
 
 **Starter** - 7 modules, the usual starting set: Sales Accounting, Purchase Accounting,
 Receipt Accounting, Payment Accounting, Petty Cash Management, Day Book, Expense
