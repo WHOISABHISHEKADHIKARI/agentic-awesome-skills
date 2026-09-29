@@ -298,6 +298,13 @@ New joiners feel lost in week one and nobody notices.
 - **Problem:** Notion import shows every column as Text.
   **Solution:** that is expected. Apply the property mapping table once, after import.
 
+
+## Buddy Programme Matching Rules
+
+Treat a buddy match as a supported assignment, not as a performance judgement. Confirm the participant consent, start date, time zone, language, accessibility needs, manager boundary, and preferred contact cadence before proposing a match. Keep the rationale for a match separate from personal data, and never infer compatibility from protected characteristics.
+
+Track each check-in as an event with date, channel, attendance, topics raised, agreed next step, and escalation owner. A missed check-in is not evidence of disengagement; record the attempt and ask the participant what support is needed. Close a match only after both participants have a documented end date or an approved reassignment.
+
 ## Related Skills
 
 - [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.

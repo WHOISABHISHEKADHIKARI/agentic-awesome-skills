@@ -335,6 +335,13 @@ We keep losing good candidates we rejected 6 months ago.
 - **Problem:** a re-engagement list built from a pool with no recorded consent.
   **Solution:** the list is unlawful, not just untidy. Block on `Consent Status` and report the count instead of emitting dates.
 
+
+## Candidate Pool Consent Rules
+
+Store only the candidate information needed for the stated recruiting purpose. Record consent source, scope, date, expiry or review date, communication preference, and lawful retention basis separately from skills and stage. A referral or public profile is not blanket consent for every future role; ask before re-engaging outside the confirmed scope.
+
+Restrict access by recruiting need, keep rejection reasons factual and job-related, and never encode protected characteristics or inferred health, family, or immigration details. When a candidate asks to withdraw, mark the request and stop outreach while preserving only the minimum audit evidence required by policy. A pool status is administrative metadata, not a quality or employability score.
+
 ## Related Skills
 
 - [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.

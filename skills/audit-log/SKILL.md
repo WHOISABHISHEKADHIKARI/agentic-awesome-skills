@@ -283,6 +283,13 @@ When a client questioned an approval we had nothing to show.
 - **Problem:** Notion import shows every column as Text.
   **Solution:** that is expected. Apply the property mapping table once, after import.
 
+
+## Audit Log Review Checklist
+
+Before treating a change record as evidence, verify the event identity, actor, timestamp, target, action, result, and correlation reference as separate values. Preserve the original event text alongside any normalized fields, record the timezone and clock source, and mark missing values as `Unknown`. Group related events by a stable correlation ID, but do not merge distinct actions into one summary row.
+
+For a review export, filter by the requested time window first, then check that the export is complete, ordered deterministically, and scoped to the authorized system. Redact secrets and personal data only after retaining a reversible reference to the source record; never rewrite the underlying audit event. Record retention, deletion, clock drift, failed writes, duplicate events, and any gap in sequence as review findings rather than silently filling them.
+
 ## Related Skills
 
 - [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.

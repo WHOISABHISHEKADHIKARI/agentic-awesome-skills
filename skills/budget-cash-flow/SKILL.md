@@ -321,6 +321,13 @@ We set a budget once and lost track of the actual position by month three.
 - **Problem:** Notion import shows every column as Text.
   **Solution:** that is expected. Apply the property mapping table once, after import.
 
+
+## Budget and Cash Flow Control Rules
+
+Keep budget, committed spend, actual spend, forecast, and cash movement as distinct measures. Record the period, department, currency, source, and approval state for every amount; never compare values from different periods or currencies without an explicit conversion basis. A variance is a calculation from confirmed inputs, not an explanation of why it happened.
+
+For each material variance, capture the owner, evidence, expected timing, confidence, and next review date. Separate timing differences from permanent changes, and keep one-off items visible rather than smoothing them into a recurring run rate. Cash availability is not the same as profit: identify opening balance, inflows, outflows, restricted funds, and minimum reserve before presenting a runway figure.
+
 ## Related Skills
 
 - [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.

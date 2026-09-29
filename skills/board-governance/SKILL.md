@@ -329,6 +329,13 @@ Board actions from last year were never followed up.
 - **Problem:** Notion import shows every column as Text.
   **Solution:** that is expected. Apply the property mapping table once, after import.
 
+
+## Board Governance Decision Rules
+
+Keep agenda items, resolutions, votes, conflicts, and follow-up actions as separate records or fields. A quorum result is a fact about the meeting, while a recommendation is an opinion; never infer approval from attendance or from a majority that was not explicitly recorded. Capture the motion wording, proposer, seconder when applicable, voting method, abstentions, recusals, result, and effective date exactly as confirmed.
+
+When preparing a board pack, label draft, circulated, approved, and superseded versions. Link every action to the resolution that created it, assign one accountable owner, and leave due dates empty when the board did not set them. Do not expose confidential papers to a wider audience merely because they appear in the same meeting folder.
+
 ## Related Skills
 
 - [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.
