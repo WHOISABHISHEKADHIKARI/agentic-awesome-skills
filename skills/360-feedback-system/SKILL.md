@@ -467,7 +467,7 @@ process facts supplied, not carried over from a template:
 Informational only. None is required for this skill to run, and a missing one never blocks
 execution.
 
-- [Module Catalog](../../CATALOG.md) - find the relevant module, then read its skill.
+- [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.
 - @people-directory - a possible subject source, if the user chooses to model one.
 - @notification-reminder-hub - optional, if the user wants due dates turned into reminders.
 

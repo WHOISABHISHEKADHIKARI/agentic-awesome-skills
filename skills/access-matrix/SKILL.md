@@ -323,7 +323,7 @@ We have 6 roles and want to know who can see payroll and bank details.
 
 ## Related Skills
 
-- [Module Catalog](../../CATALOG.md) - find the relevant module, then read its skill.
+- [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.
 - @people-directory - the employee master record most modules link to.
 - @notification-reminder-hub - turns due dates in this module into reminders.
 

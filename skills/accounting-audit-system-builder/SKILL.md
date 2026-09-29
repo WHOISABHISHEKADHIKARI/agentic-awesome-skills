@@ -288,7 +288,7 @@ monthly-closing-statements   -> skills/monthly-closing-statements/SKILL.md    th
 
 ## Related Skills
 
-- [Module Catalog](../../CATALOG.md) - find the relevant module, then read its skill.
+- [Module Catalog](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.
 - @expense-management - operational expense claims, upstream of `expense-accounting`.
 - @tax-register - the tax filing calendar, upstream of `tds-booking-payment`.
 - @notification-reminder-hub - turns due dates across these modules into reminders.
