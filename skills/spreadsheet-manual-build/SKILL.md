@@ -474,15 +474,8 @@ documentation example: emit empty templates unless the user explicitly requests 
 Employee ID,Employee Name,Leave Type,Start Date,End Date,Days,Reason,Status,Approver
 ```
 
-## Best Practices
 
-- One question per message, and only one that changes the output.
-- Reuse everything already confirmed, including by the module that owns the list.
-- Blank means unknown. It never means zero, and it never means no.
-- Exact field names, in the same order, in every output of the same field list.
-- No dashboards, no extra tabs, no decorative formatting.
-- No formula nobody defined, and no sample rows nobody asked for.
-- A `.xlsx` only when the user asks for one; otherwise the CSV and the format note.
+See the [Best Practices](references/best-practices.md) reference for the full guidance.
 
 ## Limitations
 
@@ -495,52 +488,6 @@ Employee ID,Employee Name,Leave Type,Start Date,End Date,Days,Reason,Status,Appr
 - Nothing here is verified until the user has entered rows and checked them.
 - Legal, tax and payroll review is still required before a register drives real decisions.
 
-## Security & Safety Notes
 
-Do not populate real passwords, banking details, health records, confidential employee
-information or authentication credentials, even if a field name suggests them. If the
-user explicitly supplies data the parent workflow safely requires, use it; otherwise the
-cell stays empty.
+See the [Security & Safety Notes](references/security-safety-notes.md) reference for the full guidance.
 
-When data is supplied for a requested review or conversion, use only the necessary
-fields and avoid repeating sensitive identifiers. Template requests remain empty by default.
-Do not claim that removing a message erases service storage.
-
-Never claim the workbook has automation, integrations or live synchronisation. It has
-none, and this skill creates no `.xlsx` by writing to any external system.
-
-## Common Pitfalls
-
-- **Problem:** the workbook arrives with a dashboard, a lookup sheet and a chart.
-  **Solution:** build the smallest useful register. One sheet, one header, one column per
-  field, unless the confirmed workflow needs more.
-- **Problem:** dates and amounts show as text or as numbers with no format.
-  **Solution:** apply a date format to date fields and a number format to numeric ones. A
-  cell cannot be a date because the header says so.
-- **Problem:** a column of invented values appears in an "empty" template.
-  **Solution:** examples only on request, and then obviously fake. An empty template has a
-  header and no rows.
-- **Problem:** an Excel formula computes a figure the parent skill says belongs elsewhere.
-  **Solution:** keep the column as a value and leave the calculation to the system the
-  parent skill names.
-- **Problem:** a currency symbol appears in a column and nobody chose it.
-  **Solution:** apply a currency format only where the user named the currency.
-- **Problem:** a relation column looks linked but is not.
-  **Solution:** a spreadsheet holds a reference key, not a link. Say so rather than
-  implying a relationship the file does not have.
-
-## Related Skills
-
-- [Module Catalog](../../CATALOG.md) - find the relevant module, then read its skill.
-- @csv-manual-export - the plain CSV of the same field list, for import or handoff.
-- @json-schema-manual - the same field list as a validation schema.
-
-## Reusable Prompt
-
-```
-I want [database] as a spreadsheet I can edit myself, from the fields we already agreed.
-Do not ask me for anything I have already told you.
-Give me the smallest workbook that works: one sheet, a frozen and filtered header, one
-column per field, the right date, number and currency formats, and validation lists only
-for the options we confirmed. No example rows unless I ask, and no formulas you invented.
-```

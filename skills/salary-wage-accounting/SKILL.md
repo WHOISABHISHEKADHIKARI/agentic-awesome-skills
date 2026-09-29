@@ -400,7 +400,7 @@ Payroll runs on a sheet and at month end we cannot tell what is still owed as PF
 - @expense-accounting - books the salary and wage lines into the expense register.
 - @payment-accounting - records the bank or cash payment that settles the net figure.
 - @tds-booking-payment - carries the salary TDS into the statutory register and return.
-- [Source Document & Filing](../source-document-filing/SKILL.md) - stores the signed wage sheet and the deposit challan.
+- ](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/source-document-filing/SKILL.md) - stores the signed wage sheet and the deposit challan.
 
 ## Reusable Prompt
 

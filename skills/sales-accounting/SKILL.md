@@ -489,48 +489,6 @@ We issue credit invoices and nobody can tell which customers have actually paid.
   from the conversation or service storage.
 - Anything that becomes a tax or legal filing needs a qualified human reviewer.
 
-## Common Pitfalls
 
-- **Problem:** a static mapping is described as a completed workspace build.
-  **Solution:** deliver manual mappings without a connection; claim a live change only
-  after the authorized tool operation succeeds.
-- **Problem:** asked all six questions in one message.
-  **Solution:** ask one, wait, and drop any the first answer already covered.
-- **Problem:** opened with "how are sales invoices raised today?" when the user had already
-  described the process.
-  **Solution:** read the request first; ask only what would change the recommendation.
-- **Problem:** one status field carrying both "paid" and "overdue".
-  **Solution:** split them - `Payment Status` for what was received, `Aging Status` for
-  how late it is.
-- **Problem:** every row shows a TDS rate, so nobody can tell which invoices actually had it.
-  **Solution:** leave it unset unless it was confirmed for that customer.
-- **Problem:** credit terms and due date filled in on a cash sale.
-  **Solution:** those fields are optional; a cash sale leaves them empty.
-- **Problem:** a single table silently truncating a two-item invoice.
-  **Solution:** settle the line question in Step 2 - repeated rows or a line table.
-- **Problem:** built a full system when one table was asked for.
-  **Solution:** build what was requested; mention the parent skill separately.
-- **Problem:** all four artifacts drift apart.
-  **Solution:** derive all four from the Field Reference, never by hand.
-- **Problem:** Notion import shows every column as Text.
-  **Solution:** that is expected. Apply the property mapping table once, after import.
+See the [Common Pitfalls](references/common-pitfalls.md) reference for the full guidance.
 
-## Related Skills
-
-- @accounting-audit-system-builder - routes to this skill and the other accounting modules.
-- [Source Document & Filing](../source-document-filing/SKILL.md) - files the invoice with its supporting documents.
-- @receipt-accounting - clears the receivable carried in `Net Receivable` and `Balance`.
-- @payment-accounting - records the receipt against `Payment Status` and reduces `Balance`.
-- @credit-cycle-analysis - ages the outstanding balances this module produces.
-- @party-ledger-reconciliation - reconciles the debtor ledger against this register.
-- @tds-booking-payment - handles TDS customers deduct, at the rate confirmed for that customer.
-- @day-book - the daily entry log this register feeds.
-
-## Reusable Prompt
-
-```
-I want to set up sales invoices and the receivables they create for my company.
-Ask me one short question at a time, and only about what I have not already told you.
-Then recommend the smallest setup that fits, and wait for me to ask before you build it.
-When I ask, output CSV, SQL DDL, JSON Schema and a Notion property mapping. Data only.
-```

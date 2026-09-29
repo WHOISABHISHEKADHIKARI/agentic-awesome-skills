@@ -354,7 +354,7 @@ Our accountant keeps asking for supporting documents and nobody can find them.
 
 - @accounting-audit-system-builder - routes to this skill and the other accounting modules.
 - @purchase-accounting - the purchase entries these documents support.
-- [Sales Accounting](../sales-accounting/SKILL.md) - the sales entries these documents support.
+- ](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/sales-accounting/SKILL.md) - the sales entries these documents support.
 - @payment-accounting - the payment entries these documents support.
 - @audit-preparation - reads this register to answer evidence requests.
 
