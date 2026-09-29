@@ -106,7 +106,7 @@ provide a usable link. Report material validation failures or limitations separa
 
 **A selected Notion output is rendered by `notion-manual-import`, so route the
 Notion step there.** When the user selects Notion, hand that step to
-[notion-manual-import](../notion-manual-import/SKILL.md): it holds the CSV, the property
+](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/notion-manual-import/SKILL.md): it holds the CSV, the property
 mapping, the import steps and the verification checklist, and it renders the Field
 Reference below instead of defining a table of its own. Do not restate the mapping
 here and do not improvise the import steps. Manual CSV and mapping outputs need no
@@ -340,9 +340,9 @@ We set goals in January and never looked at them again.
 
 ## Related Skills
 
-- [Module Catalog](../../CATALOG.md) - find the relevant module, then read its skill.
+- ](https://github.com/sickn33/agentic-awesome-skills/blob/main/CATALOG.md) - find the relevant module, then read its skill.
 - @people-directory - the employee master record most modules link to.
-- [Notification & Reminder Hub](../notification-reminder-hub/SKILL.md) - turns due dates in this module into reminders.
+- ](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/notification-reminder-hub/SKILL.md) - turns due dates in this module into reminders.
 
 ## Reusable Prompt
 

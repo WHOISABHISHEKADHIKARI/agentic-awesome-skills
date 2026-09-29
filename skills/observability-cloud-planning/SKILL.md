@@ -150,7 +150,7 @@ provide a usable link. Report material validation failures or limitations separa
 
 **A selected Notion output is rendered by `notion-manual-import`, so route the
 Notion step there.** When the user selects Notion, hand that step to
-[notion-manual-import](../notion-manual-import/SKILL.md): it holds the CSV, the property
+](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/notion-manual-import/SKILL.md): it holds the CSV, the property
 mapping, the import steps and the verification checklist, and it renders the Field
 Reference below instead of defining a table of its own. Do not restate the mapping
 here and do not improvise the import steps. Manual CSV and mapping outputs need no
@@ -482,98 +482,6 @@ what we should be paying for all this.
 - It cannot judge whether a provider, region or architecture is right. It structures the
   question.
 
-## Security & Safety Notes
 
-- Never invent a hostname, IP address, service identifier, provider, price, traffic figure,
-  error rate, uptime percentage or recovery time. `Unknown` and blank are correct.
-- Never paste credentials, API keys, tokens, SSH keys, database connection strings, backup
-  locations or `.env` contents into this table. Not into a dashboard field, not into Notes.
-- Never paste real customer data, personal data, health data or payment data into this
-  table. `Data Handled` records the *category*, not the data.
-- Do not put secrets, tokens or personal data in log lines. That decision is made when
-  logging is configured, and this table is where the consequence is recorded - so a
-  service that would log secrets belongs in a different design.
-- Sending logs to a third-party service is a data transfer. Confirm the destination, the
-  agreement, the region and the retention before enabling it, and record the decision in
-  `Notes`.
-- `Data Handled` = `Credentials or secrets` means access to those logs is itself a
-  privileged operation. Restrict it and review who has it.
-- Never leave a monitoring endpoint unauthenticated. A public status page that leaks
-  internal hostnames or error detail is an information disclosure.
-- Alert channels contain contact details. Keep the register in an access-restricted place;
-  do not paste a real phone number or escalation tree into a shared spreadsheet while
-  prototyping.
-- If a monitoring tool is given production access, scope it to read-only and to the minimum
-  needed. An observability agent with write access to the thing it observes is a real
-  privilege.
-- Local reads, generation commands, and validation are part of a requested artifact build.
-  External writes, messages, provisioning, and publication require authorization for that
-  action and target; existing explicit authorization does not need to be repeated.
+See the [Security & Safety Notes](references/security-safety-notes.md) reference for the full guidance.
 
-## Common Pitfalls
-
-- **Problem:** a static mapping is described as a completed workspace build.
-  **Solution:** deliver manual mappings without a connection; claim a live change only
-  after the authorized tool operation succeeds.
-- **Problem:** asked all five questions in one message.
-  **Solution:** ask one, wait, and drop any the first answer already covered.
-- **Problem:** an uptime check running on the same server as the site.
-  **Solution:** monitor from outside, ideally from a different provider or region. A
-  self-hosted check cannot observe its own failure.
-- **Problem:** monitoring the server, not the booking.
-  **Solution:** add a synthetic check that completes a real transaction end to end. That is
-  the signal that matches the business loss.
-- **Problem:** twenty alerts, none read.
-  **Solution:** three signals, `Critical` only for waking someone, and a quarterly review
-  that deletes anything no human acted on. Alert fatigue is not a tooling problem.
-- **Problem:** an SLO of 99.99% on a business that has never measured above 98%.
-  **Solution:** measure the baseline, then set a target you can hold. A permanently firing
-  alert is a target that has already failed.
-- **Problem:** an alert with no runbook, discovered at 3am.
-  **Solution:** blank `Runbook URL` blocks going live. Write the runbook first, and rehearse
-  it while the site is up.
-- **Problem:** the whole stack arrived at once and nothing is maintained after month two.
-  **Solution:** phase it. Phase 2 only when phase 1 is being read and acted on.
-- **Problem:** logs shipped to a third party, including personal data and card fragments.
-  **Solution:** decide what may leave the business before the agent is installed, not after.
-  Scrub at source.
-- **Problem:** December arrived and the plan had never been tested under load.
-  **Solution:** test in November. A peak season is the one time a monitoring plan must
-  already be proven.
-- **Problem:** a service with no named owner.
-  **Solution:** assign one. An unowned service is unmonitored regardless of its dashboards.
-- **Problem:** all four artifacts drift apart.
-  **Solution:** derive all four from the field list in this file, never by hand.
-- **Problem:** Notion import shows every column as Text.
-  **Solution:** that is expected. Apply the property mapping table once, after import.
-
-## Related Skills
-
-- @brand-growth-system-builder - routes to this skill and the other 12 brand and growth modules.
-- @business-website-setup - the site whose availability this table protects.
-- `devops-pipeline-designer` (engineering pack) - how a change reaches the service in
-  `Deployment Method`.
-- `runbook-playbook` (engineering pack) - the document every `Runbook URL` should point at.
-- `ci-cd-pipeline-builder` (engineering pack) - deployment, alerting on build failure.
-- `security-and-privacy` (engineering pack) - access control, secrets, incident response.
-- `data-privacy-controls` (`me-ops-system-builder`) - what may be logged and for how long.
-- `cloud-cost-variance-tracker` (`me-ops-system-builder`) - reconciling `Monthly Cost
-  Estimate` against the real invoice.
-- `legal-compliance-vault` (`me-ops-system-builder`) - where the data-processing agreement
-  for a third-party log destination is stored.
-- @code-of-conduct - what may be recorded about a person, and who may read it.
-- @gbp-local-seo-intent - the phone number and hours that must stay correct when the site
-  is down, since a monitoring alert and a listing are the same promise.
-
-## Reusable Prompt
-
-```
-I need a monitoring and cloud plan for a small business: what is critical, what should be
-measured, what should alert a human, and what it will cost.
-Ask me one short question at a time, and only about what I have not already told you.
-Never invent a hostname, a provider, a price, a traffic figure or an uptime target. Start
-with the one failure that would stop the business earning, and monitor it from outside the
-infrastructure. Three signals, and no alert without a runbook. Wait for me to ask before
-you build it.
-When I ask, output CSV, SQL DDL, JSON Schema and a Notion property mapping. Data only.
-```

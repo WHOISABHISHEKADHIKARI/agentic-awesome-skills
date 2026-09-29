@@ -121,7 +121,7 @@ provide a usable link. Report material validation failures or limitations separa
 
 **A selected Notion output is rendered by `notion-manual-import`, so route the
 Notion step there.** When the user selects Notion, hand that step to
-[notion-manual-import](../notion-manual-import/SKILL.md): it holds the CSV, the property
+](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/notion-manual-import/SKILL.md): it holds the CSV, the property
 mapping, the import steps and the verification checklist, and it renders the Field
 Reference below instead of defining a table of its own. Do not restate the mapping
 here and do not improvise the import steps. Manual CSV and mapping outputs need no
@@ -483,26 +483,6 @@ Month-end takes us ten days and we still find mistakes in the numbers afterwards
   **Solution:** a period is not closed until every gate reads `Yes`. Draft the statements
   if you must, but keep the record open.
 
-## Related Skills
 
-- @accounting-audit-system-builder - routes to this skill and the other accounting modules.
-- [Party / Ledger Reconciliation](../party-ledger-reconciliation/SKILL.md) - the reconciliations this close depends on.
-- @inventory-stock-reconciliation - the inventory gate in this checklist.
-- @tds-booking-payment - the withholding gate in this checklist.
-- @receipt-accounting - the receipt entries completed before the close.
-- @payment-accounting - the payment entries completed before the close.
-- @purchase-accounting - the purchase side of the entry completion gate.
-- @sales-accounting - the sales side of the entry completion gate.
-- @day-book - the cash and bank book the cash and bank gates are checked against.
-- @credit-cycle-analysis - the receivables and payables review in this checklist, measured.
-- @expense-accounting - where the period expenses behind the profit figure come from.
-- @audit-preparation - where the finished pack and its working papers are collected.
+See the [Related Skills](references/related-skills.md) reference for the full guidance.
 
-## Reusable Prompt
-
-```
-I want to set up the month-end checklist, the reconciliations it depends on, and the statements it produces for my company.
-Ask me one short question at a time, and only about what I have not already told you.
-Then recommend the smallest setup that fits, and wait for me to ask before you build it.
-When I ask, output CSV, SQL DDL, JSON Schema and a Notion property mapping. Data only.
-```
